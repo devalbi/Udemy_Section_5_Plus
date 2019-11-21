@@ -7,25 +7,21 @@ public class MinAndMaxChallenge {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        int maxNumber = Integer.MIN_VALUE, minNumber = Integer.MAX_VALUE;
 
 
         while (true) {
-            int maxNumber = 0, minNumber = 10;
             System.out.println("Enter Number: ");
             boolean hasNextInt = scanner.hasNextInt();
             if (hasNextInt) {
                 int number = scanner.nextInt();
-                while(number > 0){
-                    int digit = number % 10;
-                    number = number /10;
-                    if(digit > maxNumber)
+                    if(number > maxNumber)
                     {
-                        maxNumber = digit;
+                        maxNumber = number;
                     }
-                    if(digit < minNumber){
-                        minNumber = digit;
+                    if(number < minNumber){
+                        minNumber = number;
                     }
-                }
 
             } else {
                 System.out.println("Invalid Input");
@@ -35,5 +31,7 @@ public class MinAndMaxChallenge {
             System.out.println("MinNum is: " + minNumber + ", MaxNum is: " +maxNumber );
             scanner.nextLine();
         }
+
+        scanner.close();
     }
 }
