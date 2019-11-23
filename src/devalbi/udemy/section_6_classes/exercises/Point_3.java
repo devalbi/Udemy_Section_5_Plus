@@ -32,7 +32,7 @@ public class Point_3 {
     }
 
     public double distance(){
-        double point =  Math.sqrt((double) (0 -x) * (0 - x) + (0 - y) * (0 - y));
+        double point =  distance(0,0);
         return point;
     }
 
@@ -41,9 +41,11 @@ public class Point_3 {
         return point;
     }
 
-    public double distance(double pointB){
-        double point =  distance();
-        
+    public double distance(Point_3 pointB){
+        int xb =  pointB.getX();
+        int yb =  pointB.getY();
+        double point = distance(xb, yb);
+
         return point;
     }
 }
