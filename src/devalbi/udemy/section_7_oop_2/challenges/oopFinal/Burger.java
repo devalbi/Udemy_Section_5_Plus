@@ -77,7 +77,7 @@ public class Burger {
         this.patty = new Beef();
     }
 
-    public void inputIngredient(){
+    public void inputIngredient(){ //@Gav Step 2. Child/healthyBurger calling this method.
         System.out.println(OPTIONS_LIST + "\nWould you like to add ingredients? \n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
         String input = scanner.nextLine();
         if(input.toLowerCase().equals("y")) {
@@ -86,9 +86,9 @@ public class Burger {
 
                 boolean hasNextInt = scanner.hasNextInt();
                 if (hasNextInt) {
-                    int option = scanner.nextInt();
+                    int nextInt = scanner.nextInt();
                     scanner.nextLine();
-                    if (option == 0) {
+                    if (nextInt == 0) {
                         System.out.println("Please enter any key to confirm you are finished \n" +
                                             "Otherwise enter any 'y' to continue adding ingredients. \n");
                         input = scanner.nextLine();
@@ -98,12 +98,13 @@ public class Burger {
                             break; //breaks out of loop.
                         }
                     }
-                    if ((option >= 1) && (option <= MAX_OPTION)) {
-                        this.addIngredient(option);
+                    if ((nextInt >= 1) && (nextInt <= MAX_OPTION)) {
+                        this.addIngredient(nextInt); //@Gav Step 3. this is the method in question, I want to call the method in this class(with int nextInt param)
+                                                    //Put this. in a futile effort to make it call the parent method.
                         ingredientsCount++;
                         ingredients += ",";
                     } else {
-                        System.out.println("You have entered an invalid option, please renter.");
+                        System.out.println("You have entered an invalid nextInt, please renter.");
                     }
                 }
             }
@@ -111,7 +112,7 @@ public class Burger {
         this.setFinalPrice(); //Gets final price and prints out for user
     }
 
-    public void addIngredient(int option){
+    public void addIngredient(int option){ //@Gav Step 4. Want to call this one, but it is calling child one
         //Validation on option and ingredientsCounter are handled in Scanner class.
         switch (option){
             case 1:

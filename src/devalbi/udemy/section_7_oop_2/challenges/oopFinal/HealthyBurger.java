@@ -32,7 +32,8 @@ public class HealthyBurger extends Burger {
 
     @Override
     public void inputIngredient(){
-        super.inputIngredient();
+        super.inputIngredient(); //Step 1. Calling Super/Burger class' method.
+                                //Aim is to add 4 ingredients then to add the additional 2 that are unique to the "Healthy Burger"
 
         System.out.println("Would you like to add some healthy ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
         String input = scanner.nextLine();
@@ -66,7 +67,7 @@ public class HealthyBurger extends Burger {
     }
 
     @Override
-    public void addIngredient(int option){
+    public void addIngredient(int option){ //@Gav Step 5 - Calling this child method instead.
         //Validation on option and ingredientsCounter are handled in Scanner class.
         switch (option){
             case 1:
