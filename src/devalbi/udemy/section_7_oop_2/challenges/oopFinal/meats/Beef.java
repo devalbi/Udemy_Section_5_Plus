@@ -2,6 +2,7 @@ package devalbi.udemy.section_7_oop_2.challenges.oopFinal.meats;
 
 public class Beef extends Patty {
 
+    //Created class to use Compounding
     public Beef(String name) {
         super(name);
     }

@@ -2,6 +2,7 @@ package devalbi.udemy.section_7_oop_2.challenges.oopFinal.dulexe;
 
 public class Drink {
 
+    //Created class to use Compounding
     private String flavour;
     private String size;
 

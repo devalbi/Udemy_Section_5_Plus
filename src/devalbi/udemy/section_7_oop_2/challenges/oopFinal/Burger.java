@@ -34,9 +34,7 @@ public class Burger {
 /*    Exception in thread "main" java.util.NoSuchElementException: No line found
     at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
     at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Burger.InputIngredient(Burger.java:75)
-    at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Main.main(Main.java:14)
-
-    Not sure if this keeps the scanner object alive until object is removed?*/
+    at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Main.main(Main.java:14)*/
 
     //Constructor for full configuration.
     public Burger(String patty, String bun, double price, String name) {
@@ -77,21 +75,23 @@ public class Burger {
         this.patty = new Beef();
     }
 
+    //Method to allow user to input their options
     public void inputIngredient(){ //@Gav Step 2. Child/healthyBurger calling this method.
         System.out.println(OPTIONS_LIST + "\nWould you like to add ingredients? \n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
         String input = scanner.nextLine();
         if(input.toLowerCase().equals("y")) {
             while (ingredientsCount < MAX_NUMBER_INGREDIENTS) {
                 System.out.println(OPTIONS_LIST + "\nYou can add " + (MAX_NUMBER_INGREDIENTS - ingredientsCount) + " more ingredients \n");
-
                 boolean hasNextInt = scanner.hasNextInt();
                 if (hasNextInt) {
                     int nextInt = scanner.nextInt();
-                    scanner.nextLine();
+                    scanner.nextLine(); //Needed when using .nexInt().
+                    //Used to check if User does not want to continue adding items
                     if (nextInt == 0) {
                         System.out.println("Please enter any key to confirm you are finished \n" +
                                             "Otherwise enter any 'y' to continue adding ingredients. \n");
                         input = scanner.nextLine();
+                        //Confirms user does not want to continue.
                         if (input.toLowerCase().equals("y")) {
                             continue; // continues to next iteration of loop.
                         } else {
@@ -99,8 +99,8 @@ public class Burger {
                         }
                     }
                     if ((nextInt >= 1) && (nextInt <= MAX_OPTION)) {
-                        addIngredient(nextInt); //@Gav Step 3. this is the method in question, I want to call the method in this class(with int nextInt param)
-                                                    //Put this. in a futile effort to make it call the parent method.
+                        //If option is in item preset, adds item
+                        addIngredient(nextInt);
                         ingredientsCount++;
                         ingredients += ",";
                     } else {
@@ -109,9 +109,10 @@ public class Burger {
                 }
             }
         }
-        this.calculateFinalPrice(); //Gets final price and prints out for user
+        calculatePrice(); //Gets final price and prints out for user
     }
 
+    //When ingredients is added, this method handles it being added to ingredients
     public void addIngredient(int option){ //@Gav Step 4. Want to call this one, but it is calling child one
         //Validation on option and ingredientsCounter are handled in Scanner class.
         switch (option){
@@ -148,15 +149,16 @@ public class Burger {
         }
     }
 
-    public String getBurgerDetails(){ //Used to structure the final print out to the user
+    //Used to structure the final print out to the user
+    public String getBurgerDetails(){
         String finalBurgerDetails;
         if(ingredients == null) {
             finalBurgerDetails = "You have ordered a " + getName() +
-                    " burger on a " + bun.getName() + ". \n" +
+                    " burger, with a " + patty.getName() +" on a " + bun.getName() + ". \n" +
                     "The final price is: $" + getPrice();
         } else {
             finalBurgerDetails = "You have ordered a " + getName() +
-                    " burger on a " + bun.getName() +
+                    " burger, with a " + patty.getName() + " on a " + bun.getName() +
                     " bun for $" + getPrice() + ". \n" +
                     "You have also added the following ingredients:" +
                     ingredients + ". " +
@@ -169,9 +171,13 @@ public class Burger {
         return name;
     }
 
-    public void calculateFinalPrice(){
+    public void calculatePrice(){
         //Calculates final price then sets the price to new value.
         this.finalPrice = getPrice() + (ingredientsCount * 0.5d);
+    }
+
+    public double getFinalPrice() {
+        return finalPrice;
     }
 
     public void setFinalPrice(double finalPrice) {
@@ -182,32 +188,24 @@ public class Burger {
         return price;
     }
 
-    public double getFinalPrice() {
-        return finalPrice;
-    }
-
     public void setPrice(double price) {
-        this.finalPrice = price;
-    }
-
-    public void setPatty(Patty patty) {
-        this.patty = patty;
-    }
-
-    public void setBun(Bun bun) {
-        this.bun = bun;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getIngredients() {
-        return ingredients;
+        this.price = price;
     }
 
     public int getIngredientsCount() {
         return ingredientsCount;
+    }
+
+    public String getBunName() {
+        return bun.getName();
+    }
+
+    public String getPattyName(){
+        return patty.getName();
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

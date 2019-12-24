@@ -3,6 +3,7 @@ package devalbi.udemy.section_7_oop_2.challenges.oopFinal.bun;
 public class Bun {
     private String name;
 
+    //Created class to use Compounding
     public Bun(String name) {
         this.name = name;
     }

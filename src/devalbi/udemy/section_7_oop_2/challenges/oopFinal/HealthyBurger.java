@@ -1,8 +1,6 @@
 package devalbi.udemy.section_7_oop_2.challenges.oopFinal;
 
 import devalbi.udemy.section_7_oop_2.challenges.oopFinal.bun.Bun;
-import devalbi.udemy.section_7_oop_2.challenges.oopFinal.bun.Multigrain;
-import devalbi.udemy.section_7_oop_2.challenges.oopFinal.meats.Beef;
 import devalbi.udemy.section_7_oop_2.challenges.oopFinal.meats.Patty;
 
 public class HealthyBurger extends Burger {
@@ -23,17 +21,17 @@ public class HealthyBurger extends Burger {
                                                 "Enter '4' for Onions \n" +
                                                 "Enter '0' to when done. \n";
 
-    public HealthyBurger() {
-        setPrice(10.00d);
-        setName("Healthy Burger");
-         this.bun =  new Multigrain();
-         this.patty = new Beef();
-    }
+    public HealthyBurger(){
+        super("Beef", "Multigrain", 11.00d, "Healthy Burger");
+    }                                                                                                                                        
 
+    //overrides Burger inputIngredients() method.
     @Override
     public void inputIngredient(){
-        super.inputIngredient(); //@Gav Step 1. Calling Super/Burger class' method.
-                                //Aim is to add 4 ingredients then to add the additional 2 that are unique to the "Healthy Burger"
+        //Calls Burger method first to add ordinary ingredients.
+        super.inputIngredient();
+
+        //Now adds Healthy Burger ingredients.
         System.out.println("Would you like to add some healthy ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
         String input = scanner.nextLine();
         if(input.toLowerCase().equals("y")) {
@@ -62,11 +60,10 @@ public class HealthyBurger extends Burger {
                 }
             }
         }
-        this.calculateFinalPrice();//Gets final price and prints out for user
+        calculatePrice();//Gets final price and prints out for user
     }
 
-    public void addHealthyIngredient(int option){ //@Gav Step 5 - Calling this child method instead. Should only call this when called from in this class in Step 6 in method above above
-        //Validation on option and ingredientsCounter are handled in Scanner class.
+    public void addHealthyIngredient(int option){
         switch (option){
             case 1:
                 addIngredient("Guacamole");
@@ -91,8 +88,9 @@ public class HealthyBurger extends Burger {
         return super.getBurgerDetails();
     }
 
+    //gets adds price for healthy burger. Uses getPrice as we want the base price as calculateFinalPrice() is
     @Override
-    public void calculateFinalPrice() {
+    public void calculatePrice() {
         double healthyIngredientsPrice = (double) getPrice() + healthyIngredientsCounter + (getIngredientsCount() * 0.5);
         super.setFinalPrice(healthyIngredientsPrice);
     }
