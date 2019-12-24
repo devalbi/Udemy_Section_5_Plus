@@ -34,7 +34,6 @@ public class HealthyBurger extends Burger {
     public void inputIngredient(){
         super.inputIngredient(); //@Gav Step 1. Calling Super/Burger class' method.
                                 //Aim is to add 4 ingredients then to add the additional 2 that are unique to the "Healthy Burger"
-
         System.out.println("Would you like to add some healthy ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
         String input = scanner.nextLine();
         if(input.toLowerCase().equals("y")) {
@@ -55,7 +54,7 @@ public class HealthyBurger extends Burger {
                         }
                     }
                     if ((nextInt >= 1) && (nextInt <= MAX_OPTION_HEALTY)) {
-                        addIngredient(nextInt);  //@Gav Step 6 - this should call the child/healthyburger/this class' method below.
+                        addHealthyIngredient(nextInt);  //@Gav Step 6 - this should call the child/healthyburger/this class' method below.
                         healthyIngredientsCounter++;
                     } else {
                         System.out.println("You have entered an invalid nextInt, please renter.");
@@ -63,11 +62,10 @@ public class HealthyBurger extends Burger {
                 }
             }
         }
-        setFinalPrice(); //Gets final price and prints out for user
+        this.calculateFinalPrice();//Gets final price and prints out for user
     }
 
-    @Override
-    public void addIngredient(int option){ //@Gav Step 5 - Calling this child method instead. Should only call this when called from in this class in Step 6 in method above above
+    public void addHealthyIngredient(int option){ //@Gav Step 5 - Calling this child method instead. Should only call this when called from in this class in Step 6 in method above above
         //Validation on option and ingredientsCounter are handled in Scanner class.
         switch (option){
             case 1:
@@ -94,16 +92,9 @@ public class HealthyBurger extends Burger {
     }
 
     @Override
-    public void setFinalPrice(double finalPrice) {
-        double healthyIngredientsPrice = (double) getPrice() + healthyIngredientsCounter;
+    public void calculateFinalPrice() {
+        double healthyIngredientsPrice = (double) getPrice() + healthyIngredientsCounter + (getIngredientsCount() * 0.5);
         super.setFinalPrice(healthyIngredientsPrice);
     }
 
-    public String getHealthyBurgerDetails() {
-        return healthyBurgerDetails;
-    }
-
-    public String getHealthyIngredients() {
-        return healthyIngredients;
-    }
 }

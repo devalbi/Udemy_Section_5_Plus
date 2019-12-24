@@ -11,8 +11,13 @@ public class Main {
 
         burger1.inputIngredient();*/
 
-        HealthyBurger healthyBurger = new HealthyBurger();
+/*        HealthyBurger healthyBurger = new HealthyBurger();
         healthyBurger.inputIngredient();
+        System.out.println(healthyBurger.getBurgerDetails());
+        System.out.println(healthyBurger.getHealthyBurgerDetails());*/
+
+        DeluxeBurger deluxeBurger = new DeluxeBurger();
+        System.out.println(deluxeBurger.getBurgerDetails());
 
     }
 }

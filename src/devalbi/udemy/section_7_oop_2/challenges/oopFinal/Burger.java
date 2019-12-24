@@ -16,7 +16,7 @@ public class Burger {
     private Bun bun;
     private double price, finalPrice;
     private int ingredientsCount = 0;
-    private String ingredients;
+    private String ingredients ="";
     private String name;
 
     private static int MAX_NUMBER_INGREDIENTS = 4; //Making static as is not instance dependent and can save memory.
@@ -99,7 +99,7 @@ public class Burger {
                         }
                     }
                     if ((nextInt >= 1) && (nextInt <= MAX_OPTION)) {
-                        this.addIngredient(nextInt); //@Gav Step 3. this is the method in question, I want to call the method in this class(with int nextInt param)
+                        addIngredient(nextInt); //@Gav Step 3. this is the method in question, I want to call the method in this class(with int nextInt param)
                                                     //Put this. in a futile effort to make it call the parent method.
                         ingredientsCount++;
                         ingredients += ",";
@@ -109,7 +109,7 @@ public class Burger {
                 }
             }
         }
-        this.setFinalPrice(); //Gets final price and prints out for user
+        this.calculateFinalPrice(); //Gets final price and prints out for user
     }
 
     public void addIngredient(int option){ //@Gav Step 4. Want to call this one, but it is calling child one
@@ -157,7 +157,7 @@ public class Burger {
         } else {
             finalBurgerDetails = "You have ordered a " + getName() +
                     " burger on a " + bun.getName() +
-                    " bun for %  " + getPrice() + ". \n" +
+                    " bun for $" + getPrice() + ". \n" +
                     "You have also added the following ingredients:" +
                     ingredients + ". " +
                     "The final price is: $" + getFinalPrice();
@@ -169,9 +169,13 @@ public class Burger {
         return name;
     }
 
-    public void setFinalPrice(){
+    public void calculateFinalPrice(){
         //Calculates final price then sets the price to new value.
         this.finalPrice = getPrice() + (ingredientsCount * 0.5d);
+    }
+
+    public void setFinalPrice(double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 
     public double getPrice() {
@@ -192,10 +196,6 @@ public class Burger {
 
     public void setBun(Bun bun) {
         this.bun = bun;
-    }
-
-    public void setFinalPrice(double finalPrice) {
-        this.finalPrice = finalPrice;
     }
 
     public void setName(String name) {
