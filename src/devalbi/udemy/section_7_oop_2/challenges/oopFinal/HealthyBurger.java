@@ -55,7 +55,7 @@ public class HealthyBurger extends Burger {
                         }
                     }
                     if ((nextInt >= 1) && (nextInt <= MAX_OPTION_HEALTY)) {
-                        addIngredient(nextInt);
+                        addIngredient(nextInt);  //@Gav Step 6 - this should call the child/healthyburger/this class' method below.
                         healthyIngredientsCounter++;
                     } else {
                         System.out.println("You have entered an invalid nextInt, please renter.");
@@ -67,7 +67,7 @@ public class HealthyBurger extends Burger {
     }
 
     @Override
-    public void addIngredient(int option){ //@Gav Step 5 - Calling this child method instead.
+    public void addIngredient(int option){ //@Gav Step 5 - Calling this child method instead. Should only call this when called from in this class in Step 6 in method above above
         //Validation on option and ingredientsCounter are handled in Scanner class.
         switch (option){
             case 1:
