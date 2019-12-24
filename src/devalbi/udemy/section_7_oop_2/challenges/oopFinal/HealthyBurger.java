@@ -16,6 +16,12 @@ public class HealthyBurger extends Burger {
 
     private static int MAX_NUMBER_HEALTHY_INGREDIENTS = 2;
     private static int MAX_OPTION_HEALTY = 4;
+    private static String HEALTHY_OPTION_LIST ="Please enter the number for ingredient you wish: \n" +
+                                                "Enter '1' for Guacamole \n" +
+                                                "Enter '2' for Coleslaw \n" +
+                                                "Enter '3'  for Brie \n" +
+                                                "Enter '4' for Onions \n" +
+                                                "Enter '0' to when done. \n";
 
     public HealthyBurger() {
         setPrice(10.00d);
@@ -25,48 +31,38 @@ public class HealthyBurger extends Burger {
     }
 
     @Override
-    public void InputIngredient(){
+    public void inputIngredient(){
+        super.inputIngredient();
 
-        String optionList = "Please enter the number for ingredient you wish: \n" +
-                "Enter '1' for Guacamole \n" +
-                "Enter '2' for Coleslaw \n" +
-                "Enter '3'  for Brie \n" +
-                "Enter '4' for Onions \n" +
-                "Enter '0' to when done. \n";
-
-        System.out.println("Would you like to add ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
-        String addIngredients = scanner.nextLine();
-        if(addIngredients.toLowerCase().equals("y")) {
-            System.out.println("You can up to " + MAX_NUMBER_HEALTHY_INGREDIENTS + " ingredients");
+        System.out.println("Would you like to add some healthy ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
+        String input = scanner.nextLine();
+        if(input.toLowerCase().equals("y")) {
             while (healthyIngredientsCounter < MAX_NUMBER_HEALTHY_INGREDIENTS) {
-                System.out.println(optionList +"\n" + "you can add " + (MAX_NUMBER_HEALTHY_INGREDIENTS - healthyIngredientsCounter) + " more ingredients \n");
-
+                System.out.println(HEALTHY_OPTION_LIST +"\n" + "you can add " + (MAX_NUMBER_HEALTHY_INGREDIENTS - healthyIngredientsCounter) + " more healthy ingredients \n");
                 boolean hasNextInt = scanner.hasNextInt();
                 if (hasNextInt) {
-                    int option = scanner.nextInt();
+                    int nextInt = scanner.nextInt();
                     scanner.nextLine();
-                    if (option == 0) {
+                    if (nextInt == 0) {
                         System.out.println("please enter any key to confirm you are finished \n" +
                                 "Otherwise enter any 'y' to continue adding ingredients. \n");
-                        addIngredients = scanner.nextLine();
-                        if (addIngredients.toLowerCase().equals("y")) {
+                        input = scanner.nextLine();
+                        if (input.toLowerCase().equals("y")) {
                             continue; // continues to next iteration of loop.
                         } else {
                             break; //breaks out of loop.
                         }
                     }
-                    if ((option >= 1) && (option <= MAX_OPTION_HEALTY)) {
-                        addIngredient(option);
+                    if ((nextInt >= 1) && (nextInt <= MAX_OPTION_HEALTY)) {
+                        addIngredient(nextInt);
                         healthyIngredientsCounter++;
                     } else {
-                        System.out.println("You have entered an invalid option, please renter.");
+                        System.out.println("You have entered an invalid nextInt, please renter.");
                     }
                 }
             }
         }
-        //scanner.close(); removed as
         setFinalPrice(); //Gets final price and prints out for user
-        System.out.println(this.getBurgerDetails());
     }
 
     @Override
@@ -94,6 +90,12 @@ public class HealthyBurger extends Burger {
     @Override
     public String getBurgerDetails() {
         return super.getBurgerDetails();
+    }
+
+    @Override
+    public void setFinalPrice(double finalPrice) {
+        double healthyIngredientsPrice = (double) getPrice() + healthyIngredientsCounter;
+        super.setFinalPrice(healthyIngredientsPrice);
     }
 
     public String getHealthyBurgerDetails() {

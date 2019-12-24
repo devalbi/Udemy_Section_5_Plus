@@ -21,6 +21,12 @@ public class Burger {
 
     private static int MAX_NUMBER_INGREDIENTS = 4; //Making static as is not instance dependent and can save memory.
     private static int MAX_OPTION = 4;
+    protected static String OPTIONS_LIST = "Please enter the number for ingredient you wish: \n" +
+                                            "Enter '1' for Tomato \n" +
+                                            "Enter '2' for Lettuce \n" +
+                                            "Enter '3'  for Cheese \n" +
+                                            "Enter '4' for Bacon \n" +
+                                            "Enter '0' to when done. \n";
 
     Scanner scanner = new Scanner(System.in); //Using as an instance variable as opposed to a local variable.
     //Scanner.close(); was causing an error when being used in the method,
@@ -71,37 +77,29 @@ public class Burger {
         this.patty = new Beef();
     }
 
-    public void InputIngredient(){
-        String optionList = "Please enter the number for ingredient you wish: \n" +
-                "Enter '1' for Tomato \n" +
-                "Enter '2' for Lettuce \n" +
-                "Enter '3'  for Cheese \n" +
-                "Enter '4' for Bacon \n" +
-                "Enter '0' to when done. \n";
-
-        System.out.println("Would you like to add ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
-        String addIngredients = scanner.nextLine();
-        if(addIngredients.toLowerCase().equals("y")) {
-            System.out.println("You can up to " + MAX_NUMBER_INGREDIENTS + " ingredients");
+    public void inputIngredient(){
+        System.out.println(OPTIONS_LIST + "\nWould you like to add ingredients? \n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
+        String input = scanner.nextLine();
+        if(input.toLowerCase().equals("y")) {
             while (ingredientsCount < MAX_NUMBER_INGREDIENTS) {
-                System.out.println(optionList +"\n" + "you can add " + (MAX_NUMBER_INGREDIENTS - ingredientsCount) + " more ingredients \n");
+                System.out.println(OPTIONS_LIST + "\nYou can add " + (MAX_NUMBER_INGREDIENTS - ingredientsCount) + " more ingredients \n");
 
                 boolean hasNextInt = scanner.hasNextInt();
                 if (hasNextInt) {
                     int option = scanner.nextInt();
                     scanner.nextLine();
                     if (option == 0) {
-                        System.out.println("please enter any key to confirm you are finished \n" +
-                                "Otherwise enter any 'y' to continue adding ingredients. \n");
-                        addIngredients = scanner.nextLine();
-                        if (addIngredients.toLowerCase().equals("y")) {
+                        System.out.println("Please enter any key to confirm you are finished \n" +
+                                            "Otherwise enter any 'y' to continue adding ingredients. \n");
+                        input = scanner.nextLine();
+                        if (input.toLowerCase().equals("y")) {
                             continue; // continues to next iteration of loop.
                         } else {
                             break; //breaks out of loop.
                         }
                     }
                     if ((option >= 1) && (option <= MAX_OPTION)) {
-                        addIngredient(option);
+                        this.addIngredient(option);
                         ingredientsCount++;
                         ingredients += ",";
                     } else {
@@ -110,9 +108,7 @@ public class Burger {
                 }
             }
         }
-        //scanner.close(); removed as
-        setFinalPrice(); //Gets final price and prints out for user
-        System.out.println(getBurgerDetails());
+        this.setFinalPrice(); //Gets final price and prints out for user
     }
 
     public void addIngredient(int option){
@@ -146,14 +142,9 @@ public class Burger {
         if(option.equals(",")){
             ingredients += option;
         } else {
-            ingredients += " " + option + " for $0.50";
+            ingredients += " " + option + " for $1.00";
             System.out.println(option + " added to burger!");
         }
-    }
-
-    public void setFinalPrice(){
-        //Calculates final price then sets the price to new value.
-        this.finalPrice = getPrice() + (ingredientsCount * 0.5d);
     }
 
     public String getBurgerDetails(){ //Used to structure the final print out to the user
@@ -175,6 +166,11 @@ public class Burger {
 
     public String getName() {
         return name;
+    }
+
+    public void setFinalPrice(){
+        //Calculates final price then sets the price to new value.
+        this.finalPrice = getPrice() + (ingredientsCount * 0.5d);
     }
 
     public double getPrice() {
