@@ -32,7 +32,7 @@ public class HealthyBurger extends Burger {
 
     @Override
     public void inputIngredient(){
-        super.inputIngredient(); //Step 1. Calling Super/Burger class' method.
+        super.inputIngredient(); //@Gav Step 1. Calling Super/Burger class' method.
                                 //Aim is to add 4 ingredients then to add the additional 2 that are unique to the "Healthy Burger"
 
         System.out.println("Would you like to add some healthy ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
