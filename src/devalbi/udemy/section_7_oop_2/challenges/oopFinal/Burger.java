@@ -29,12 +29,8 @@ public class Burger {
                                             "Enter '0' to when done. \n";
 
     Scanner scanner = new Scanner(System.in); //Using as an instance variable as opposed to a local variable.
-    //Scanner.close(); was causing an error when being used in the method,
-    //Removed it to prevent this error:
-/*    Exception in thread "main" java.util.NoSuchElementException: No line found
-    at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
-    at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Burger.InputIngredient(Burger.java:75)
-    at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Main.main(Main.java:14)*/
+    //Scanner.close(); was causing an error when being used in the method, removed it to prevent this error:
+/*    Exception in thread "main" java.util.NoSuchElementException: No line found, at java.base/java.util.Scanner.nextLine(Scanner.java:1651), at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Burger.InputIngredient(Burger.java:75))*/
 
     //Constructor for full configuration.
     public Burger(String patty, String bun, double price, String name) {
@@ -81,12 +77,15 @@ public class Burger {
         String input = scanner.nextLine();
         if(input.toLowerCase().equals("y")) {
             while (ingredientsCount < MAX_NUMBER_INGREDIENTS) {
+
                 System.out.println(OPTIONS_LIST + "\nYou can add " + (MAX_NUMBER_INGREDIENTS - ingredientsCount) + " more ingredients \n");
                 boolean hasNextInt = scanner.hasNextInt();
+
                 if (hasNextInt) {
                     int nextInt = scanner.nextInt();
                     scanner.nextLine(); //Needed when using .nexInt().
                     //Used to check if User does not want to continue adding items
+
                     if (nextInt == 0) {
                         System.out.println("Please enter any key to confirm you are finished \n" +
                                             "Otherwise enter any 'y' to continue adding ingredients. \n");
@@ -98,6 +97,7 @@ public class Burger {
                             break; //breaks out of loop.
                         }
                     }
+
                     if ((nextInt >= 1) && (nextInt <= MAX_OPTION)) {
                         //If option is in item preset, adds item
                         addIngredient(nextInt);
@@ -116,6 +116,7 @@ public class Burger {
     public void addIngredient(int option){ //@Gav Step 4. Want to call this one, but it is calling child one
         //Validation on option and ingredientsCounter are handled in Scanner class.
         switch (option){
+            //If wanted to assign unique values, could have "addToFinalPrice(double price)" and put in each case.
             case 1:
                 ingredients += " Tomato for $0.50";
                 System.out.println("Tomato added to burger!");
