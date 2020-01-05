@@ -11,55 +11,52 @@ public class Bank {
         this.name = name;
     }
 
-    public void addBranch(String branchName){
-        if((!validName(branchName)) || (doesBranchExist(branchName))){
+    public boolean addBranch(String branchName){
+        if((!validName(branchName)) || (findBranchByName(branchName) == null)){
             System.out.println("\nError adding branch.");
-            return;
+            return false;
         }
 
         Branch newBranch = Branch.addBranch(branchName);
         branches.add(newBranch);
+        return true;
     }
 
-    public void addCustomerToBranch(String branchName, String customerName, double transaction){
+    public boolean addCustomerToBranch(String branchName, String customerName, double transaction){
 
         Branch branch = findBranchByName(branchName);
-        if((branch == null) || (!validName(customerName))){ //Checks to see if branch object is returned.
+        //Checks to see if branch object is returned, If name is valid and if addCustomerToBranch method returns false.
+        if((branch == null) || (!validName(customerName)) || (!branch.addCustomerToBranch(customerName, transaction))){
             System.out.println("Error adding Customer to Branch");
-            return;
+            return false;
         }
-        branch.addCustomerToBranch(customerName, transaction);
+        System.out.println("New Customer " + customerName + " was added to branch " + branch.getBranchName());
+        return true;
 
     }
 
-    public void addCustomerTransaction(String branchName, String customerName, double transaction){
+    public boolean addCustomerTransaction(String branchName, String customerName, double transaction){
 
         Branch branch = findBranchByName(branchName);
-        Customer customer = branch.findCustomerByName(customerName);
-        if(customer == null){
-            System.out.println("\nNo customer with name " + name);
-            return;
+        if(branch == null){
+            System.out.println("\nNo branch with name " + branchName);
+            return false;
         }
-        //Checks to see if transaction has a value greater or less than 0.
-        if (transaction == 0) {
-            System.out.println("\nCannot carry out a transaction with value " + transaction);
-            return;
+        if(!branch.customerTransaction(customerName, transaction)){
+            System.out.println("\nCannot carry out a transaction with for customer " + customerName +" value " + transaction);
+            return false;
         }
 
         //Prints out different message depending on deposit or withdrawal.
         if (transaction > 0) {
-            System.out.println("\nCustomer " + customer.getName() + " has deposited $" + transaction);
-            branch.customerTransaction(customer, transaction); //Example of autoboxing: double -> Double
-            return;
+            System.out.println("\nCustomer " + customerName + " has deposited $" + transaction);
         }
         if (transaction < 0) {
-            System.out.println("\nCustomer " + customer.getName() + " has withdrawn $" + transaction);
-            branch.customerTransaction(customer, transaction); //autoboxing, primitive added to Double arraylist.
-            return;
+            System.out.println("\nCustomer " + customerName + " has withdrawn $" + transaction);
         }
-        /*//Old Way doing it, with Validation done in branch class.
-        Branch branch = findBranchByName(branchName);
-        branch.customerTransaction(customerName, transaction); //Validation is done in class*/
+
+        branch.customerTransaction(customerName, transaction);
+        return true;
     }
 
     public void printBranchDetails(String branchName){
@@ -72,21 +69,11 @@ public class Bank {
 
     private Branch findBranchByName(String name){
         for(int i = 0; i < branches.size(); i++){
-            if(branches.get(i).getBranchName().toLowerCase().contains(name.toLowerCase())){ //Use tolower() to avoid some potential issues with uppercase.
+            if(branches.get(i).getBranchName().toLowerCase().equals(name.toLowerCase())){ //Use tolower() to avoid some potential issues with uppercase.
                 return branches.get(i);
             }
         }
         return null;
-    }
-
-    //checks to see if customer exists, returns true if does, false if not
-    private boolean doesBranchExist(String name){
-        for(int i = 0; i < branches.size(); i++){
-            if(branches.get(i).getBranchName().toLowerCase().contains(name.toLowerCase())){  //Use tolower() to avoid some potential issues with uppercase.
-                return true;
-            }
-        }
-        return false;
     }
 
     //Validates if Name is correct length and format
