@@ -9,7 +9,11 @@ public class Customer {
     public Customer(String name, double initialTransaction) {
         this.name = name;
         this.transactions = new ArrayList<Double>();
-        transactions.add(initialTransaction); //Example of Autoboxing for initial transaction
+        if(initialTransaction <= 0){ //Ensure initial transaction cannot be <= 0, as cannot set initial bank account to below 0.
+            transactions.add(0.0d);
+        } else{
+            transactions.add(initialTransaction); //Example of Autoboxing for initial transaction
+        }
     }
 
     public Customer(String name) {

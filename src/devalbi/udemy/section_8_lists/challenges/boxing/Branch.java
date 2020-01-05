@@ -15,7 +15,7 @@ public class Branch {
     //Creates and adds new customer to ArrayList
     public boolean addCustomerToBranch(String customerName, double transaction) {
         Customer newCustomer = Customer.newCustomer(customerName, transaction);
-        if ((newCustomer == null) || (findCustomerByName(customerName) == null) || (transaction == 0)) {
+        if ((newCustomer == null) || (findCustomerByName(customerName) != null) || (transaction == 0)) {
             return false;
         }
 
@@ -43,11 +43,14 @@ public class Branch {
         return null;
     }
 
-    public void printBranchesDetails() {
+    //boolean value to optionally show customer transactions.
+    public void printBranchesDetails(boolean showTransactions) {
         for (int i = 0; i < customers.size(); i++) {
             String name = customers.get(i).getName();
             System.out.println("\nCustomer " + name + ".");
-            customers.get(i).printTransactions();
+            if(showTransactions == true) {
+                customers.get(i).printTransactions();
+            }
         }
     }
 

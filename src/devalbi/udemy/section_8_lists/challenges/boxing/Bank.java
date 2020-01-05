@@ -12,7 +12,7 @@ public class Bank {
     }
 
     public boolean addBranch(String branchName){
-        if((!validName(branchName)) || (findBranchByName(branchName) == null)){
+        if((!validName(branchName)) || (findBranchByName(branchName) != null)){
             System.out.println("\nError adding branch.");
             return false;
         }
@@ -43,7 +43,7 @@ public class Bank {
             return false;
         }
         if(!branch.customerTransaction(customerName, transaction)){
-            System.out.println("\nCannot carry out a transaction with for customer " + customerName +" value " + transaction);
+            System.out.println("\nCannot carry out a transaction for customer " + customerName +" with value of $"+ transaction);
             return false;
         }
 
@@ -59,12 +59,13 @@ public class Bank {
         return true;
     }
 
-    public void printBranchDetails(String branchName){
+    //boolean value to optionally show customer transactions.
+    public void printBranchDetails(String branchName, boolean showTransactions){
         Branch branch = findBranchByName(branchName);
         if(branch == null){
-            System.out.println("\nBranch with name " + name + " was not found." );
+            System.out.println("\nBranch with name " + branch.getBranchName() + " was not found." );
         }
-        branch.printBranchesDetails();
+        branch.printBranchesDetails(showTransactions);
     }
 
     private Branch findBranchByName(String name){
