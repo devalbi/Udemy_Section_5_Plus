@@ -62,6 +62,8 @@ public class Playlist{
         return null;
     }
 
+    /*Not iterating as expected. Randomly picking songs, some that should not be added to playlist.
+    * Need to investigate how iterator is iterating through LinkedList 'playlist'*/
     public void runPlaylist(){
         ListIterator<Song> iterator = playlist.listIterator();
         Scanner scanner = new Scanner(System.in);
@@ -75,6 +77,7 @@ public class Playlist{
         iterator.next();
 
         System.out.println(options());
+        System.out.println();
         while (!quit){
             System.out.println("Pick your option: ");
             int option = scanner.nextInt();

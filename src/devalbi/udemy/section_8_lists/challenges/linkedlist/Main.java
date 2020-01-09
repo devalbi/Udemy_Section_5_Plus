@@ -50,7 +50,7 @@ public class Main {
         playlist.printSongsInPlaylist();
         am.addSongToAlbum(amSong4);
         playlist.addSongToPlaylist("Porcelain", "Californication");
-        playlist.printSongsInPlaylist();
+        playlist.runPlaylist();
 
 
 
