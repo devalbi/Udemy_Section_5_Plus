@@ -23,11 +23,12 @@ public class Playlist{
     public void addSongToPlaylist(String songName){
         for(Album album : albums){
             Song song = album.findSongByName(songName);
-            if((song == null) || (!playlist.contains(song))){
+            if((song != null) && (!playlist.contains(song))){
                 playlist.add(song);
                 return;
             } else {
             System.out.println("Cannot add song " + songName);
+            return;
         }
         }
     }
@@ -35,7 +36,7 @@ public class Playlist{
     public void addSongToPlaylist(String songName, String albumName){
         Album album = findAlbum(albumName);
         Song song = album.findSongByName(songName);
-        if((song == null) || (!playlist.contains(song))){
+        if((song != null) && (!playlist.contains(song))){
             playlist.add(song);
         } else {
             System.out.println("Cannot add song " + songName);
@@ -154,7 +155,9 @@ public class Playlist{
         }
         System.out.println("Playlist: \n");
         while(iterator.hasNext()){
-            System.out.println("Song name: " + iterator.next().getName());
+            if(iterator.hasNext()) {
+                System.out.println("Song name: " + iterator.next().getName());
+            }
         }
         System.out.println("===========================================");
     }
