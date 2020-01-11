@@ -33,27 +33,23 @@ public class Main {
         californication.addSongToAlbum(calSong3);
         californication.addSongToAlbum(calSong4);
 
-        playlist.addSongToPlaylist("dance little liar");
+        playlist.addSongToPlaylist("dance Little liar");
         playlist.addSongToPlaylist("crying Lightning");
         playlist.addSongToPlaylist("Secret Door", "am");
-        playlist.addSongToPlaylist("Secret Door", "am");
-        playlist.addSongToPlaylist("prety visitors"); //Spelt incorrectly to ensure test if it is omitted as expected
-
         playlist.addSongToPlaylist("Scar Tissue", "californication");
         playlist.addSongToPlaylist("Get on Top", "Californication");
+
+        //Should not add these songs due to duplication, wrong album/song pair, wrong spelling, no album assigned.
+        playlist.addSongToPlaylist("Secret Door", "am");
+        playlist.addSongToPlaylist("prety visitors"); //Spelt incorrectly to ensure test if it is omitted as expected
         playlist.addSongToPlaylist("Otherside");
         playlist.addSongToPlaylist("Porcelain", "AM");
-
-
         playlist.addSongToPlaylist("Independent");
 
         playlist.printSongsInPlaylist();
-        am.addSongToAlbum(amSong4);
         playlist.addSongToPlaylist("Porcelain", "Californication");
+
         playlist.runPlaylist();
-
-
-
 
     }
 }

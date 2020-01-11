@@ -79,7 +79,7 @@ public class Playlist{
         System.out.println(options());
         System.out.println();
         while (!quit){
-            System.out.println("Pick your option: ");
+            System.out.println("\nPick your option: ");
             int option = scanner.nextInt();
             scanner.nextLine();
 
@@ -89,11 +89,11 @@ public class Playlist{
                     quit = true;
                     break;
                 case 1:
-                    if(goingForward) {
+                    if(!goingForward) {
                         if (iterator.hasNext()) {
-                        iterator.next();
-                        goingForward= true;
+                            iterator.next();
                         }
+                        goingForward= true;
                     }
                     if (iterator.hasNext()) {
                         System.out.println("Playing next song: " + iterator.next().getName());
@@ -103,11 +103,11 @@ public class Playlist{
                     }
                     break;
                 case 2:
-                    if(!goingForward){
+                    if(goingForward){
                         if(iterator.hasPrevious()){
                             iterator.previous();
-                            goingForward = false;
                         }
+                        goingForward = false;
                     }
                     if(iterator.hasPrevious()){
                         System.out.printf("Rewinding to previous song: " + iterator.previous().getName());
@@ -118,11 +118,21 @@ public class Playlist{
                     break;
                 case 3:
                     if(goingForward){
-                        System.out.println("Replaying current song: " + iterator.previous());
-                        goingForward = false;
+                        if(iterator.hasPrevious()) {
+                            System.out.println("Replaying current song: " + iterator.previous());
+                            goingForward = false;
+                        } else {
+                            System.out.println("Replaying current song: " + iterator.next());
+                            goingForward = true;
+                        }
                     } else {
-                        System.out.println("Replaying current song: " + iterator.next());
-                        goingForward = true;
+                        if(iterator.hasNext()) {
+                            System.out.println("Replaying current song: " + iterator.next());
+                            goingForward = true;
+                        } else {
+                            System.out.println("Replaying current song: " + iterator.previous());
+                            goingForward = false;
+                        }
                     }
                     break;
                 case 4:
@@ -136,6 +146,9 @@ public class Playlist{
                 case 5:
                     printSongsInPlaylist();
                     break;
+                case 6:
+                    System.out.println(options());
+                    break;
             }
 
         }
@@ -146,8 +159,9 @@ public class Playlist{
                 "Press 1 - Skip to Next Song\n" +
                 "Press 2 - Skip Back to previous song\n" +
                 "Press 3 - Replay Current Song\n" +
-                "Press 4 - Remove Song from playlist" +
-                "Press 5 - Print out options.";
+                "Press 4 - Remove Song from playlist\n" +
+                "Press 5 - Print out Playlist.\n" +
+                "Press 6 - Print out options";
     }
 
     public void printSongsInPlaylist(){
