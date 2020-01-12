@@ -123,7 +123,6 @@ public class Playlist{
                             goingForward = false;
                         } else {
                             System.out.println("Replaying current song: " + iterator.next());
-                            goingForward = true;
                         }
                     } else {
                         if(iterator.hasNext()) {
@@ -131,17 +130,18 @@ public class Playlist{
                             goingForward = true;
                         } else {
                             System.out.println("Replaying current song: " + iterator.previous());
-                            goingForward = false;
                         }
                     }
                     break;
                 case 4:
-                    if(goingForward){
-                        System.out.println("Removing song: " + iterator.previous());
-                    } else {
-                        System.out.println("Removing song: " + iterator.next());
+                    if(playlist.size() > 0) {
+                        if (goingForward) {
+                            System.out.println("Removing song: " + iterator.previous());
+                        } else {
+                            System.out.println("Removing song: " + iterator.next());
+                        }
+                        iterator.remove();
                     }
-                    iterator.remove();
                     break;
                 case 5:
                     printSongsInPlaylist();
