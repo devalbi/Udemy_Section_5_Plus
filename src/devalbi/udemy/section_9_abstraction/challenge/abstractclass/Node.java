@@ -72,4 +72,12 @@ public abstract class Node {
     public void setObject(double s){
         this.o = s;
     }
+
+    public void setPrevious(Node previous) {
+        this.previous = previous;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
 }
