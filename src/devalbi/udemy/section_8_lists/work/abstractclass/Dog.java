@@ -13,7 +13,7 @@ public class Dog extends Animal {
 
     @Override
     public void eat() {
-        /*getName() from Abstract class animal*/
+        /*getName() from Node class animal*/
         System.out.println(getName() + " eating");
 
     }
