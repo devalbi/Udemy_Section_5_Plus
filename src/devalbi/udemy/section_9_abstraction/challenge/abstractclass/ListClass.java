@@ -28,7 +28,8 @@ public class ListClass extends Node {
         *  1. Figure out how to reference head Node
         *  2. Use CompareTo to compare the 2 nodes
         *  3. Look at changing to accept 2 Nodes compartTo(Node node1, Node node 2)?
-        *  4. Determine Head, Tail, replace, insert, remove */
+        *  4. Determine Head, Tail, replace, insert, remove
+        *  5. Make Node instance for Head and Tail to start and end link */
         int result = compareTo(node);
         if((!nextNodeAvailable) && (!previousNodeAvailable)){
 
