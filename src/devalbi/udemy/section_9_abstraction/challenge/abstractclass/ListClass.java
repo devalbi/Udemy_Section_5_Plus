@@ -16,13 +16,13 @@ public class ListClass implements IListClass {
         * If Empty, enter node as Head*/
         if(isEmpty) {
             isEmpty = false;
-            head = node;
+            this.head = node;
             System.out.printf("Head Node " + node.getObjectValue() + " is added.\n");
             return;
         }
 
         boolean isNodeAdded = false;
-        Node currentNode = head;
+        Node currentNode = this.head;
         while(!isNodeAdded){
             int result = currentNode.compareTo(node); //Compares values for sorting
             if(result == 0){ //Prevents Duplicate entries,
@@ -49,24 +49,24 @@ public class ListClass implements IListClass {
     }
 
     private void insertNode(Node node,  Node currentNode) {
-        if (currentNode == head){
-            if(!head.hasNextNode()){
+        if (currentNode == this.head){
+            if(!this.head.hasNextNode()){
                 //Sets Head to Tail and new node to Head
-                tail = head;
-                tail.setPreviousNode(node);
-                head = node;
-                head.setNextNode(tail);
+                this.tail = this.head;
+                this.tail.setPreviousNode(node);
+                this.head = node;
+                this.head.setNextNode(tail);
 
             } else {
                 currentNode.setPreviousNode(node);
-                head = node;
-                head.setNextNode(currentNode);
+                this.head = node;
+                this.head.setNextNode(currentNode);
 
             }
         } else if(currentNode == tail) {
             currentNode.setNextNode(node);
-            tail = node;
-            tail.setPreviousNode(currentNode);
+            this.tail = node;
+            this.tail.setPreviousNode(currentNode);
 
         } else {
             Node linkNode = currentNode.getPreviousNode();
@@ -78,18 +78,18 @@ public class ListClass implements IListClass {
     }
 
     public void removeNode(Node node) {
-        if (node == head){
-            if(!head.hasNextNode()){
-                head = node;
+        if (node == this.head){
+            if(!this.head.hasNextNode()){
+                this.head = node;
                 isEmpty = true;
 
             } else {
-                head = head.getNextNode();
-                head.setPreviousNode(null);
+                this.head = this.head.getNextNode();
+                this.head.setPreviousNode(null);
             }
-        } else if(node == tail) {
-            tail = tail.getPreviousNode();
-            tail.setNextNode(null);
+        } else if(node == this.tail) {
+            this.tail = this.tail.getPreviousNode();
+            this.tail.setNextNode(null);
         } else {
             Node nextNode = node.getNextNode();
             nextNode.setPreviousNode(node.getPreviousNode());
@@ -100,15 +100,15 @@ public class ListClass implements IListClass {
     }
 
     public void printList() {
-        Node currentNode = head;
-        if (head == null) {
+        Node currentNode = this.head;
+        if (this.head == null) {
             System.out.println("List is Empty");
         } else {
             while (currentNode.hasNextNode()) {
                 System.out.println(currentNode.toString());
                 currentNode = currentNode.getNextNode();
             }
-            System.out.println(tail.toString() + "\n");
+            System.out.println(this.tail.toString() + "\n");
         }
     }
 

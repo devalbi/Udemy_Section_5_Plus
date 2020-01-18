@@ -25,7 +25,7 @@ public class BinarySearchTree extends ListClass implements IListClass {
            if (result == 0) {
                 System.out.println("Cannot add duplicate for Node: " + currentNode.getObjectValue());
                 return;
-            } else if (result > 0) {
+            } else if (result < 0) {
                 if (currentNode.getRight() == null) {
                     currentNode.setRight(node);
                     isNodeAdded = true;
@@ -34,7 +34,7 @@ public class BinarySearchTree extends ListClass implements IListClass {
                     currentNode =  currentNode.getRight();
                     continue;
                 }
-            } else if (result < 0) {
+            } else if (result > 0) {
                 if(currentNode.getLeft() == null) {
                     currentNode.setLeft(node);
                     System.out.println(node.getObjectValue() + " is added to the Left of  " + currentNode);
@@ -62,10 +62,10 @@ public class BinarySearchTree extends ListClass implements IListClass {
         boolean isNode = false;
         while (!isNode){
             int result = currentNode.compareTo(node);
-            if(result < 0){
+            if(result > 0){
                 currentNode = currentNode.getLeft();
                 continue;
-            } else if (result > 0 ){
+            } else if (result < 0 ){
                 currentNode = currentNode.getRight();
                 continue;
             } else  if(currentNode == node){ //This is the node to remove.
@@ -110,13 +110,13 @@ public class BinarySearchTree extends ListClass implements IListClass {
             int result = currentNode.compareTo(node);
             if(result == 0 ){
                 return currentNode;
-            } else  if (result > 0) {
+            } else  if (result < 0) {
                 if((currentNode.getRight() != null)){
                     if(currentNode.getRight() == node){
                         return currentNode.getRight();
                     } else {
                         currentNode = currentNode.getRight();
-                        break;
+                        continue;
                     }
                 } else {
                     System.out.println("Node " + node.getObjectValue() +" does not exist");
@@ -128,7 +128,7 @@ public class BinarySearchTree extends ListClass implements IListClass {
                         return currentNode.getLeft();
                     } else {
                         currentNode = currentNode.getLeft();
-                        break;
+                        continue;
                     }
                 } else {
                     System.out.println("Node " + node.getObjectValue() +" does not exist");
@@ -145,6 +145,9 @@ public class BinarySearchTree extends ListClass implements IListClass {
         inOrder(root);
     }
 
+
+    /*This is a recursive method
+    * Should look this up*/
     public void inOrder(Node node){
         if(node != null) {
             inOrder(node.getLeft());

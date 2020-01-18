@@ -18,7 +18,7 @@ public class Main {
         SampleObject sampleObject7 = new SampleObject("Sydney");
         SampleObject sampleObject8 = new SampleObject("Canberra");
 
-        ListClass listClass = new ListClass();
+/*        ListClass listClass = new ListClass();
         listClass.addItemToList(sampleObject1);
         listClass.addItemToList(sampleObject2);
         listClass.addItemToList(sampleObject3);
@@ -31,9 +31,9 @@ public class Main {
         listClass.printList();
 
         listClass.removeNode(sampleObject2);
-        listClass.printList();
+        listClass.printList();*/
 
-/*      BinarySearchTree bst = new  BinarySearchTree();
+        BinarySearchTree bst = new  BinarySearchTree();
         bst.addItemToList(sampleObject1);
         bst.addItemToList(sampleObject2);
         bst.addItemToList(sampleObject3);
@@ -41,8 +41,9 @@ public class Main {
         bst.addItemToList(sampleObject5);
         bst.addItemToList(sampleObject6);
 
+        System.out.println("\n");
         bst.printList();
-
+/*
         bst.removeNode(sampleObject2);
         bst.printList();*/
 
