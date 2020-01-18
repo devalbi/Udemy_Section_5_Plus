@@ -4,14 +4,18 @@ public abstract class Node {
 
     private Node previous = null;
     private Node next = null;
-    private Object o;
+    private Object objectValue;
 
-    public Node(Object o) {
-        this.o = o;
+    public Node(Object object) {
+        this.objectValue = object;
     }
 
-    public Node getNextItem() {
-        if (hasNextItem()) {
+    public Node() {
+    }
+
+
+    public Node getNextNode() {
+        if (hasNextNode()) {
             Node node = next;
             return node;
         }
@@ -19,8 +23,8 @@ public abstract class Node {
         return null;
     }
 
-    public Node getPreviousItem() {
-        if (hasPreviousItem()) {
+    public Node getPreviousNode() {
+        if (hasPreviousNode()) {
             Node node = previous;
             return node;
         }
@@ -28,14 +32,14 @@ public abstract class Node {
         return null;
     }
 
-    public boolean hasNextItem(){
+    public boolean hasNextNode(){
         if(next == null){
             return false;
         }
 
         return true;
     }
-    public boolean hasPreviousItem(){
+    public boolean hasPreviousNode(){
         if(previous == null){
             return false;
         }
@@ -43,41 +47,41 @@ public abstract class Node {
         return true;
     }
 
-    public int compareTo(Node node) {
-        String objectStrValue = String.valueOf(this.o);
-        int compareValue = objectStrValue.compareTo(String.valueOf(node));
+    public int compareTo(Node node, Node currentNode) {
+        String objectStrValue = String.valueOf(currentNode.getObjectValue());
+        int compareValue = objectStrValue.compareTo(String.valueOf(node.getObjectValue()));
         return compareValue;
     }
 
-    public Node getPrevious() {
-        return previous;
+
+    public Object getObjectValue() {
+        return objectValue;
     }
 
-    public Node getNext() {
-        return next;
-    }
-
-    public Object getO() {
-        return o;
-    }
-
-    public void setObject(String s){
-        this.o = s;
+    public void setObjectValue(String s){
+        this.objectValue = s;
     }
 
     public void setObject(int s){
-        this.o = s;
+        this.objectValue = s;
     }
 
     public void setObject(double s){
-        this.o = s;
+        this.objectValue = s;
     }
 
-    public void setPrevious(Node previous) {
+    public void setPreviousNode(Node previous) {
         this.previous = previous;
     }
 
-    public void setNext(Node next) {
+    public void setNextNode(Node next) {
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "objectValue= " + this.objectValue +
+                '}';
     }
 }
