@@ -1,6 +1,6 @@
 package devalbi.udemy.section_9_abstraction.challenge.abstractclass;
 
-public class ListClass extends Node {
+public class ListClass implements IListClass {
 
     private boolean isEmpty;
     private Node head;
@@ -24,16 +24,16 @@ public class ListClass extends Node {
         boolean isNodeAdded = false;
         Node currentNode = head;
         while(!isNodeAdded){
-            int result = compareTo(node, currentNode); //Compares values for sorting
+            int result = currentNode.compareTo(node); //Compares values for sorting
             if(result == 0){ //Prevents Duplicate entries,
                 System.out.println("Node is already in Linked List.\n");
                 isNodeAdded = true;
-                break;
-            } else if(result < 0){ //If node less than current node, add in node before current node.
+                continue;
+            } else if(result > 0){ //If node less than current node, add in node before current node.
                 insertNode(node, currentNode);
                 System.out.printf("Node " + node.getObjectValue() + " is added.\n");
                 isNodeAdded = true;
-                break;
+                continue;
             }
             if(currentNode.hasNextNode()) {
                 currentNode = currentNode.getNextNode(); //Gets Next node for the next loop.
@@ -101,12 +101,15 @@ public class ListClass extends Node {
 
     public void printList() {
         Node currentNode = head;
-        while(currentNode.hasNextNode())
-        {
-            System.out.println(currentNode.toString());
-            currentNode = currentNode.getNextNode();
+        if (head == null) {
+            System.out.println("List is Empty");
+        } else {
+            while (currentNode.hasNextNode()) {
+                System.out.println(currentNode.toString());
+                currentNode = currentNode.getNextNode();
+            }
+            System.out.println(tail.toString() + "\n");
         }
-        System.out.println(tail.toString() + "\n");
     }
 
 }

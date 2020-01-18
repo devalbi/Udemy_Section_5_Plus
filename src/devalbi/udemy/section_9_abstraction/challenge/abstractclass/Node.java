@@ -4,6 +4,8 @@ public abstract class Node {
 
     private Node previous = null;
     private Node next = null;
+    private Node right = null;
+    private Node left = null;
     private Object objectValue;
 
     public Node(Object object) {
@@ -47,10 +49,15 @@ public abstract class Node {
         return true;
     }
 
-    public int compareTo(Node node, Node currentNode) {
-        String objectStrValue = String.valueOf(currentNode.getObjectValue());
-        int compareValue = objectStrValue.compareTo(String.valueOf(node.getObjectValue()));
-        return compareValue;
+    public int compareTo(Node node) {
+        if(node != null) {
+            String objectStrValue = String.valueOf(this.getObjectValue());
+            int compareValue = objectStrValue.compareTo(String.valueOf(node.getObjectValue()));
+/*            int compareValue =  ((String) this.getObjectValue()).compareTo((String) node.getObjectValue()); Tim's way of doing it*/
+            return compareValue;
+        }
+
+        return -1;
     }
 
 
@@ -76,6 +83,22 @@ public abstract class Node {
 
     public void setNextNode(Node next) {
         this.next = next;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
     }
 
     @Override
