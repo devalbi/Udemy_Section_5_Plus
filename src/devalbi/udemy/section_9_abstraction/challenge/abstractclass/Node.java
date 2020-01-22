@@ -69,6 +69,10 @@ public abstract class Node {
         this.objectValue = s;
     }
 
+    public void setObjectValue(Object o){
+        this.objectValue = o;
+    }
+
     public void setObject(int s){
         this.objectValue = s;
     }

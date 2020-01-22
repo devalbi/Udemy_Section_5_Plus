@@ -3,7 +3,6 @@ package devalbi.udemy.section_9_abstraction.challenge.abstractclass;
 public class BinarySearchTree extends ListClass implements IListClass {
 
     private Node right, left, root =  null;
-    boolean runOnce = false;
 
     public BinarySearchTree() {
 
@@ -50,6 +49,9 @@ public class BinarySearchTree extends ListClass implements IListClass {
     @Override
     public void removeNode(Node node) {
         Node currentNode = root;
+        Node parentNode = root;
+        boolean isRight = false;
+        int counter = 0;
 
         if(root == null){
             return;
@@ -63,35 +65,60 @@ public class BinarySearchTree extends ListClass implements IListClass {
         while (!isNode){
             int result = currentNode.compareTo(node);
             if(result > 0){
+                parentNode = currentNode;
                 currentNode = currentNode.getLeft();
+                isRight = false;
                 continue;
             } else if (result < 0 ){
+                parentNode = currentNode;
                 currentNode = currentNode.getRight();
+                isRight = true;
                 continue;
-            } else  if(currentNode == node){ //This is the node to remove.
-                //Check to see if both roots are null
-                if(currentNode.getRight() == null){
-                    currentNode = currentNode.getLeft();
-                } else if (currentNode.getLeft() == null){
-                    currentNode = currentNode.getRight();
-                }
-                break;
-            }
-
-            currentNode = currentNode.getRight();
-            Node tempNode = minRightValue(currentNode);
-            currentNode = tempNode;
-            if(!isNode) {
-                removeNode(tempNode);
+            } else  if(currentNode == node){
+                performRemoval(currentNode, parentNode, isRight);
                 isNode = true;
             }
-            isNode = false;
+
+        }
+    }
+
+    public void performRemoval(Node currentNode, Node parentNode, boolean isRight){
+        //This is the node to remove.
+        //Check to see if both roots are null
+        if(currentNode.getRight() == null){
+            currentNode = currentNode.getLeft();
+            if(isRight){
+                parentNode.setRight(currentNode);
+            } else {
+                parentNode.setLeft(currentNode);
+            }
+        } else if (currentNode.getLeft() == null){
+            currentNode = currentNode.getRight();
+            if(isRight){
+                parentNode.setRight(currentNode);
+            } else {
+                parentNode.setLeft(currentNode);
+            }
+        } else {
+
+            Node tempNode = currentNode.getRight();
+            Node leftMostParent = currentNode;
+            while (tempNode.getLeft() != null) {
+                leftMostParent = tempNode;
+                tempNode = tempNode.getLeft();
+            }
+            currentNode.setObjectValue(tempNode.getObjectValue());
+            if(leftMostParent == currentNode){
+                currentNode.setRight(tempNode.getRight());
+            } else {
+                leftMostParent.setLeft(currentNode.getRight());
+            }
 
         }
     }
 
     private Node minRightValue(Node node){
-        Node currentNode = root;
+        Node currentNode = node;
 
         while(currentNode.getLeft() != null){
             currentNode =  currentNode.getLeft();
