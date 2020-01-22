@@ -107,6 +107,7 @@ public class BinarySearchTree extends ListClass implements IListClass {
                 leftMostParent = tempNode;
                 tempNode = tempNode.getLeft();
             }
+
             currentNode.setObjectValue(tempNode.getObjectValue());
             if(leftMostParent == currentNode){
                 currentNode.setRight(tempNode.getRight());
