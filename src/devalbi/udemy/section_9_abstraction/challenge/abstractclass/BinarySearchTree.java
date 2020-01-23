@@ -101,6 +101,18 @@ public class BinarySearchTree extends ListClass implements IListClass {
             }
         } else {
 
+            Node tempNode = minRightValue(currentNode); // This should be Sale
+            Node tempNodeLeftChild = tempNode.getRight(); //Should be seattle in this case.
+            Node rightOfParentNode = currentNode.getRight();
+
+            currentNode.setObjectValue(tempNode.getObjectValue());
+            if(tempNodeLeftChild.getRight() == null){
+                currentNode.setRight(tempNode.getLeft());
+            } else {
+                tempNodeLeftChild.setRight(currentNode.getLeft());
+            }
+
+/*
             Node tempNode = currentNode.getRight();
             Node leftMostParent = currentNode;
             while (tempNode.getLeft() != null) {
@@ -108,12 +120,15 @@ public class BinarySearchTree extends ListClass implements IListClass {
                 tempNode = tempNode.getLeft();
             }
 
+
+
             currentNode.setObjectValue(tempNode.getObjectValue());
             if(leftMostParent == currentNode){
-                currentNode.setRight(tempNode.getRight());
+                currentNode.setRight(tempNode.getLeft());
             } else {
-                leftMostParent.setLeft(currentNode.getRight());
+                leftMostParent.setLeft(currentNode.getLeft());
             }
+            */
 
         }
     }
