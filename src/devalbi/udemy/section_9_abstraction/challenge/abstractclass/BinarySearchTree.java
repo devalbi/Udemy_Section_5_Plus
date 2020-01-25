@@ -101,34 +101,33 @@ public class BinarySearchTree extends ListClass implements IListClass {
             }
         } else {
 
-            Node tempNode = minRightValue(currentNode); // This should be Sale
-            Node tempNodeLeftChild = tempNode.getRight(); //Should be seattle in this case.
+/*            Node minRightValue = minRightValue(currentNode); // This should be Sale
+            Node tempNodeLeftChild = minRightValue.getRight(); //Should be seattle in this case.
             Node rightOfParentNode = currentNode.getRight();
 
-            currentNode.setObjectValue(tempNode.getObjectValue());
-            if(tempNodeLeftChild.getRight() == null){
-                currentNode.setRight(tempNode.getLeft());
+            currentNode.setObjectValue(minRightValue.getObjectValue());
+            if(tempNodeLeftChild.getRight() != null){
+                currentNode.setRight(minRightValue.getLeft());
             } else {
                 tempNodeLeftChild.setRight(currentNode.getLeft());
-            }
+            }*/
 
-/*
-            Node tempNode = currentNode.getRight();
+
+            Node minRightValue = currentNode.getRight();
             Node leftMostParent = currentNode;
-            while (tempNode.getLeft() != null) {
-                leftMostParent = tempNode;
-                tempNode = tempNode.getLeft();
+            Node rightNodeOfMinValue = currentNode;
+
+            while (minRightValue.getLeft() != null) {
+                leftMostParent = minRightValue;
+                minRightValue = minRightValue.getLeft();
             }
 
+            rightNodeOfMinValue = minRightValue.getRight();
+            currentNode.setObjectValue(minRightValue.getObjectValue());
 
-
-            currentNode.setObjectValue(tempNode.getObjectValue());
-            if(leftMostParent == currentNode){
-                currentNode.setRight(tempNode.getLeft());
-            } else {
-                leftMostParent.setLeft(currentNode.getLeft());
+            if(minRightValue.getRight() != null){
+                leftMostParent.setLeft(rightNodeOfMinValue);
             }
-            */
 
         }
     }
