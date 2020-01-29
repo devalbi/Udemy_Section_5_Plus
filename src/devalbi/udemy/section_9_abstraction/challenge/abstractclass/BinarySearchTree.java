@@ -20,8 +20,8 @@ public class BinarySearchTree extends ListClass implements IListClass {
         boolean isNodeAdded = false;
         while (!isNodeAdded) {
 
-           int result = currentNode.compareTo(node);
-           if (result == 0) {
+            int result = currentNode.compareTo(node);
+            if (result == 0) {
                 System.out.println("Cannot add duplicate for Node: " + currentNode.getObjectValue());
                 return;
             } else if (result < 0) {
@@ -58,8 +58,8 @@ public class BinarySearchTree extends ListClass implements IListClass {
         }
 
         if(root == node){
-             root = minRightValue(root.getRight());
-             return;
+            root = minRightValue(root.getRight());
+            return;
         }
         boolean isNode = false;
         while (!isNode){
@@ -189,7 +189,7 @@ public class BinarySearchTree extends ListClass implements IListClass {
 
 
     /*This is a recursive method
-    * Should look this up*/
+     * Should look this up*/
     public void inOrder(Node node){
         if(node != null) {
             inOrder(node.getLeft());
