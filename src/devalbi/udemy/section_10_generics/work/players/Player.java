@@ -1,14 +1,14 @@
-package devalbi.udemy.section_10_generics.work;
+package devalbi.udemy.section_10_generics.work.players;
 
 public abstract class Player {
 
-    private String player;
+    private String name;
 
     public Player(String player) {
-        this.player = player;
+        this.name = player;
     }
 
-    public String getPlayer() {
-        return player;
+    public String getName() {
+        return name;
     }
 }
