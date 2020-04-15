@@ -1,6 +1,6 @@
 package devalbi.udemy.section_10_generics.challenge;
 
-public abstract class Team<T extends Team> implements Comparable<Team<T>> {
+public class Team<T extends Team> implements Comparable<Team<T>> {
 
     private int won, lost, tied = 0;
     private String name;
