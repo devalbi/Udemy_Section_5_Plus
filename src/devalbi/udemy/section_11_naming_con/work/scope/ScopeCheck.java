@@ -40,7 +40,7 @@ public class ScopeCheck {
         //if no inner class privateVar variable, will check outer class
         //To specify out class Var, use Outerclass.this.var (ScopeCheck.this.privateVar)
 
-        public int privateVar = 3;
+        private int privateVar = 3;
         public InnerClass() {
             System.out.println("InnerClass created, privateVar = " + privateVar);
         }

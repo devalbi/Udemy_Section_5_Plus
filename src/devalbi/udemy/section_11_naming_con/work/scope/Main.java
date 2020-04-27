@@ -15,6 +15,7 @@ public class Main {
 
         //Initiate Inner Class
         ScopeCheck.InnerClass innerClass = scopeCheck.new InnerClass();
+        //System.out.println("Inner class 'privateVar' is not accessible here " + innerClass.privateVar);
 
         innerClass.timesTwo();
 
