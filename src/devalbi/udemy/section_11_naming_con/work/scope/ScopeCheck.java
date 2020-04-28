@@ -53,7 +53,6 @@ public class ScopeCheck {
                 //ScopeCheck.this.timesTwo() to call outer class method.
             }
         }
-
     }
 
 
