@@ -1,7 +1,5 @@
 package devalbi.udemy.section_8_lists.work.abstractclass;
 
-import org.w3c.dom.ls.LSOutput;
-
 public interface CanFly {
 
     void fly();
