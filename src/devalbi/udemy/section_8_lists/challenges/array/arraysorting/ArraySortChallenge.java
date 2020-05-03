@@ -79,10 +79,10 @@ public class ArraySortChallenge {
 
     // printArray prints out the contents of the array
     public void printArray(Integer[] array){
-    for(int i = 0; i < array.length; i++)
-        {
-            System.out.println("Entry: " + i + " has value of: " + array[i]);
-        }
+        for(int i = 0; i < array.length; i++)
+            {
+                System.out.println("Entry: " + i + " has value of: " + array[i]);
+            }
     }
 
 }
