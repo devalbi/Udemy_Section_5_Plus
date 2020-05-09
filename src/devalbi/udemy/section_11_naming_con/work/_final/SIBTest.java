@@ -14,7 +14,7 @@ public class SIBTest {
     }
 
     static {
-        System.out.println("2nd Sstatic initialization block called");
+        System.out.println("2nd Static initialization block called");
     }
 
     public void someMethod(){

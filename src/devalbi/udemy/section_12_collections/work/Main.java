@@ -1,4 +1,4 @@
-package section_12_collections.work;
+package devalbi.udemy.section_12_collections.work;
 
 public class Main {
 
