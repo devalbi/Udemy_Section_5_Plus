@@ -1,4 +1,4 @@
-package devalbi.udemy.section_12_collections.work;
+package devalbi.udemy.section_12_collections.work.collections;
 
 import java.util.ArrayList;
 import java.util.List;
