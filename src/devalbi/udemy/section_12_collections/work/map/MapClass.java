@@ -1,4 +1,4 @@
-package devalbi.udemy.section_12_collections.work.compare;
+package devalbi.udemy.section_12_collections.work.map;
 
 import java.util.HashMap;
 import java.util.Map;
