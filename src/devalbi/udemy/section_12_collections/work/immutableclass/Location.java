@@ -3,8 +3,10 @@ package devalbi.udemy.section_12_collections.work.immutableclass;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Location {
-    //Makes these field immutable
+//1/4. final class prevents sub-classes from overwriting methods - immutable
+public final class Location {
+
+    //2/4. Makes these fields private and final to be immutable
     private final int locationID;
     private final String description;
     private final Map<String, Integer> exits;
@@ -12,9 +14,14 @@ public class Location {
     public Location(int locationID, String description, Map<String, Integer> exits) {
         this.locationID = locationID;
         this.description = description;
-        this.exits = exits;
+        if (exits != null) {
+            this.exits = new HashMap<String, Integer>(exits); //3/4. Creates copy to ref objects to help be immutable
+        } else {
+            this.exits = new HashMap<String, Integer>();
+        }
         this.exits.put("Q", 0);
     }
+    //4/4 No setter classes.
 
     //can remove as exits added when class is initialized.
     //Helps with making class immutable
