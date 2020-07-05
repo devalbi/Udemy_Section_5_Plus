@@ -1,9 +1,7 @@
 package devalbi.udemy.section_12_collections.work.sets;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -116,5 +114,17 @@ public class Main {
         Object o = new Object();
         o.equals(o);
         "pluto".equals("");
+
+
+        System.out.println("====================================================================================");
+        System.out.println("Creating new Set");
+
+        //other way to create Set
+        Set<HeavenlyBody> newSet = planets.stream()
+                .collect(Collectors.toSet());
+        System.out.println(newSet.size()+
+                " New Set: " +
+                newSet);
     }
+
 }

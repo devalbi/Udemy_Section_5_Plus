@@ -1,6 +1,5 @@
-package devalbi.udemy.section_12_collections.work.sets;
+package devalbi.udemy.section_12_collections.challenge.sets;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -1,6 +1,7 @@
 package devalbi.udemy.section_10_generics.work.players;
 
-public class Main {
+public class
+Main {
 
     public static void main(String[] args) {
         FootballPlayer joe = new FootballPlayer("Joe");
