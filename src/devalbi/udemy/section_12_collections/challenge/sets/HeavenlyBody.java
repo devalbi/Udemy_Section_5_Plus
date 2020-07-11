@@ -4,12 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 //Final class cannot be sub-classed
-public final class HeavenlyBody {
+public final class HeavenlyBody implements BodyType{
 
     private final String name;
     private final double orbitalPeriod;
     private final Set<HeavenlyBody> satellities;
+    private String bodyType;
 
+    public HeavenlyBody(String name, double orbitalPeriod, String bodyType) {
+        this.name = name;
+        this.orbitalPeriod = orbitalPeriod;
+        this.satellities = new HashSet<>();
+        addBodyType(bodyType);
+    }
 
     public HeavenlyBody(String name, double orbitalPeriod) {
         this.name = name;
@@ -56,5 +63,17 @@ public final class HeavenlyBody {
     public int hashCode() {
         System.out.println("HashCode called");
         return this.name.hashCode() + 57;
+    }
+
+    public boolean addBodyType(String bodyType){
+
+        if(bodyTypes.contains(bodyType))
+        {
+            this.bodyType = bodyType;
+            return true;
+        } else {
+            System.out.println("Body Type does not exist");
+            return false;
+        }
     }
 }
