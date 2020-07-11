@@ -67,8 +67,9 @@ public final class HeavenlyBody implements BodyType{
 
     public boolean addBodyType(String bodyType){
 
-        if(bodyTypes.contains(bodyType))
+        if(bodyTypes.contains(bodyType.toLowerCase()))
         {
+            //BodyType.MOON;
             this.bodyType = bodyType;
             return true;
         } else {

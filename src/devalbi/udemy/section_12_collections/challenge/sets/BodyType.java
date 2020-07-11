@@ -6,6 +6,11 @@ import java.util.Set;
 
 public interface BodyType {
 
-    public static Set<String> bodyTypes = new HashSet<>(Arrays.asList("Star", "Moon", "Planet", "Satellite"));
+    static String MOON = "moon";
+    static String PLANET = "planet";
+    static String STAR = "star";
+    static String SATELLITE = "satellite";
+
+    public static Set<String> bodyTypes = new HashSet<>(Arrays.asList("star", "moon", "planet", "satellite"));
 
 }
