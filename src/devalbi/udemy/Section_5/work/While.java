@@ -23,7 +23,7 @@ public class While {
         //do-while ensures statement is executed at least once
         //if value was greater than while statement, may be infinite loop.
         do{
-            System.out.println("Count value is: " + count);
+            System.out.println("Count 2 value is: " + count);
             count++;
 
             //forces code to exit loop.

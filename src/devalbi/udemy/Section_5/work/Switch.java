@@ -37,5 +37,22 @@ public class Switch {
         }
 
 
+        String team = "Kilmac";
+        switch (team) {
+            case "Bray":
+                System.out.println("Bray are playing");
+                break;
+            case "Kilmac":
+                System.out.println("Kilmac are playing");
+                break;
+            case "Greystones":
+                System.out.println("Greystones are playing");
+                break;
+            default:
+                System.out.println("Does not recognise team playing");
+                break;
+        }
+
+
     }
 }

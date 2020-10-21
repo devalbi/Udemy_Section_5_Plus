@@ -3,7 +3,7 @@ package devalbi.udemy.Section_5.work;
 public class ParsingClass {
     public static void main(String[] args) {
         String numberAsString= "2018.125";
-        System.out.println("numberAsString= " + numberAsString);
+        System.out.println("numberAsString = " + numberAsString);
 
         //int stringAsNumber = Integer.valueOf(numberAsString);
         //Converts String to Double

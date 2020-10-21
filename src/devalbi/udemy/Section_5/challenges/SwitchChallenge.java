@@ -1,5 +1,7 @@
 package devalbi.udemy.Section_5.challenges;
 
+import java.sql.SQLOutput;
+
 public class SwitchChallenge {
 
     public static void main(String[] args){
@@ -18,6 +20,6 @@ public class SwitchChallenge {
             default:
                 System.out.println("Char not found");
                 break;
-        }
+    }
     }
 }
