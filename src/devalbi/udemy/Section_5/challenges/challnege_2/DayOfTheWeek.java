@@ -1,4 +1,4 @@
-package devalbi.udemy.Section_5.challenges.txt;
+package devalbi.udemy.Section_5.challenges.challnege_2;
 
 public class DayOfTheWeek {
 
