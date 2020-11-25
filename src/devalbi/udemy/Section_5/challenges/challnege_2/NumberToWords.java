@@ -88,10 +88,87 @@ public class NumberToWords {
         //2. Convert the value of the digit found in Step 1 into a word. There are 10 possible values for that digit, those being 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. Print the corresponding word for each digit, e.g. print "Zero" if the digit is 0, "One" if the digit is 1, and so on.
         //3. Remove the last digit from the number.
         //4. Repeat Steps 2 through 4 until the number is 0.
+
+        if(!isValid(number)) {
+            System.out.println("Invalid Number");
+        }
+
+        int numberOfDigits = getDigitCount(number);
+        int reverseNumber = reverse(number);
+        int numberOfReverseDigits = getDigitCount(reverseNumber);
+        int digit = 0;
+
+        numberOfDigits =  numberOfDigits - numberOfReverseDigits;
+
+        if (numberOfDigits >= 0) {
+            while (numberOfDigits >= 0 ) {
+                System.out.println("ZERO");
+                numberOfDigits--;
+            }
+        }
+
+        while (number > 0) {
+
+            digit = reverseNumber % 10;
+            reverseNumber /= 10;
+
+            switch (digit) {
+                case (0):
+                    System.out.println("ZERO");
+                    break;
+                case (1):
+                    System.out.println("ONE");
+                    break;
+                case (2):
+                    System.out.println("TWO");
+                    break;
+                case (3):
+                    System.out.println("THREE");
+                    break;
+                case (4):
+                    System.out.println("FOUR");
+                    break;
+                case (5):
+                    System.out.println("FIVE");
+                    break;
+                case (6):
+                    System.out.println("SIX");
+                    break;
+                case (7):
+                    System.out.println("SEVEN");
+                    break;
+                case (8):
+                    System.out.println("EIGHT");
+                    break;
+                case (9):
+                    System.out.println("NINE");
+                    break;
+                default:
+                    System.out.println("OTHER");
+                    break;
+            }
+        }
     }
 
     public static int reverse(int numberToReverse) {
         //The method reverse should have one int parameter and return the reversed number (int).
+        if(!isValid(numberToReverse)) {
+            return -1;
+        }
+
+        String reverseNumberString = "";
+        int reverseNumber = 0;
+        int count = 0;
+
+        while (numberToReverse > 0) {
+            reverseNumberString += String.valueOf(numberToReverse % 10);
+            numberToReverse /= 10;
+        }
+
+        System.out.println("Reverse Number is " + reverseNumberString);
+
+        reverseNumber = Integer.parseInt(reverseNumberString);
+        return reverseNumber;
     }
 
     public static int getDigitCount(int numberToGetDigits) {
@@ -100,11 +177,35 @@ public class NumberToWords {
         //The logic above for the method numberToWords will print "One", but that is incorrect.
         //It should print "One Zero Zero". To solve this problem, write a third method called getDigitCount.
         //
-        //The method getDigitCount should have one int parameter called number and return the count of the digits in that number. If the number is negative, return -1 to indicate an invalid value.
+        //The method getDigitCount should have one int parameter called number and return the count of the digits in that number.
+        // If the number is negative, return -1 to indicate an invalid value.
         //For example, if the number has a value of 100, the method getDigitCount should return 3 since the number 100 has 3 digits (1, 0, 0).
+
+        if(!isValid(numberToGetDigits)) {
+            return -1;
+        }
+
+        int count = 0;
+
+        if ( numberToGetDigits == 0) {
+            count = 1;
+            return count;
+        }
+
+        while (numberToGetDigits > 0) {
+            numberToGetDigits /= 10;
+            count++;
+        }
+
+        System.out.println("number of digits: " + count);
+
+        return count;
     }
 
-    public static boolean inValid (int numberToCheck) {
-        if ()
+    public static boolean isValid(int number) {
+        if(number >= 0) {
+            return true;
+        } else return false;
     }
+
 }
