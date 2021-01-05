@@ -22,7 +22,7 @@ public class UserInput {
 
             int age = 2019 - yearOfBirth;
             if (age >= 0 && age <= 100) {
-                System.out.println("Your name is: " + name + "\n" + " and your age is: " + age);
+                System.out.println("Your name is: " + name + "\n" + "and your age is: " + age);
             } else {
                 System.out.println("Invalid year of Birth");
             }
