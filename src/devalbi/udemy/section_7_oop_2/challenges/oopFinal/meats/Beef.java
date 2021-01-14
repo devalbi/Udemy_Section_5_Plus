@@ -13,7 +13,7 @@ public class Beef extends Patty {
 
     @Override
     public void meatDetails() {
-        System.out.println("This is hamburger patty");
+        System.out.println("This is Hamburger patty");
     }
 
     @Override
