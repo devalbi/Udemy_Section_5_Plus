@@ -34,14 +34,14 @@ public class Fish extends Animal{
 
     //method used to call/create burger objects
     public class BurgerFactory {
-        public Burger createBurger() {
-            return new Burger();
+        public Hamburger createBurger() {
+            return new Hamburger();
         }
     }
 
     public class HealthyBurgerFactory{
         //method overriding using subclass or subvariant or covariant return type \
-        //is healthyBurger as it is a subclass of Burger
+        //is healthyBurger as it is a subclass of Hamburger
         public HealthyBurger createBurger(){
             return new HealthyBurger();
         }

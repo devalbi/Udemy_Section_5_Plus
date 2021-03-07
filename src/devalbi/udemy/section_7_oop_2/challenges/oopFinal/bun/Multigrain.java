@@ -8,7 +8,7 @@ public class Multigrain extends Bun {
     }
 
     public Multigrain() {
-        super("Multigrain Bun");
+        super("Multigrain Basebun");
     }
 
     @Override

@@ -88,7 +88,7 @@ public class MobilePhone {
         return contactList.indexOf(contact);
     }
 
-    //Prints all Contacts in arrayList.
+    //Prints all Contact in arrayList.
     public void printContactList(){
         System.out.println("You have " + contactList.size() + " contacts.");
         for(int i = 0; i < contactList.size(); i++){

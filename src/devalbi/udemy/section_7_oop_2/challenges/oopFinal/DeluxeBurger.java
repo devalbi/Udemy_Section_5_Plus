@@ -26,7 +26,7 @@ public class DeluxeBurger extends Burger{
     }
 
     public DeluxeBurger() {
-        super("Chicken", "White", 12.00d, "Deluxe Burger");
+        super("Chicken", "White", 12.00d, "Deluxe Hamburger");
         this.fries = new Fries();
         this.drink = new Drink("Pepsi");
     }
@@ -40,7 +40,7 @@ public class DeluxeBurger extends Burger{
            return deluxeBurgerDetail;
     }
 
-    //As per requirements, need to ensure Deluxe Burger cannot order additional items.
+    //As per requirements, need to ensure Deluxe Hamburger cannot order additional items.
     //Doing this by overriding the inputIngredient() method with a print out.
     @Override
     public void inputIngredient() {

@@ -1,18 +1,8 @@
 package devalbi.udemy.section_7_oop_2.challenges.oopfinal2.bun;
 
-public class Bun {
-
-    private String bunName;
+public class Bun extends Basebun {
 
     public Bun() {
-        this("Bread Roll");
-    }
-
-    public Bun(String bunName) {
-        this.bunName = bunName;
-    }
-
-    public String getBunName() {
-        return bunName;
+        super("Bun");
     }
 }

@@ -4,10 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
         //String patty, String bun, double price, String name
-/*        Burger burger = new Burger("chicken", "white", 10.00d, "Hamburger");
+/*        Hamburger burger = new Hamburger("chicken", "white", 10.00d, "BurgerPatty");
         burger.inputIngredient();
 
-        Burger burger1 = new Burger();
+        Hamburger burger1 = new Hamburger();
 
         burger1.inputIngredient();*/
 

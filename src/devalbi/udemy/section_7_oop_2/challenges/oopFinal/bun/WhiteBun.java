@@ -7,7 +7,7 @@ public class WhiteBun extends Bun{
     }
 
     public WhiteBun() {
-        super("White Bun");
+        super("White Basebun");
     }
 
     @Override

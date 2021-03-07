@@ -22,16 +22,16 @@ public class HealthyBurger extends Burger {
                                                 "Enter '0' to when done. \n";
 
     public HealthyBurger(){
-        super("Beef", "Multigrain", 11.00d, "Healthy Burger");
+        super("Beef", "Multigrain", 11.00d, "Healthy Hamburger");
     }                                                                                                                                        
 
-    //overrides Burger inputIngredients() method.
+    //overrides Hamburger inputIngredients() method.
     @Override
     public void inputIngredient(){
-        //Calls Burger method first to add ordinary ingredients.
+        //Calls Hamburger method first to add ordinary ingredients.
         super.inputIngredient();
 
-        //Now adds Healthy Burger ingredients.
+        //Now adds Healthy Hamburger ingredients.
         System.out.println("Would you like to add some healthy ingredients? \n\n" + "Enter 'y' to add ingredients. Otherwise any other key to skip.");
         String input = scanner.nextLine();
         if(input.toLowerCase().equals("y")) {
