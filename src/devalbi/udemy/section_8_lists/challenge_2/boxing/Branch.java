@@ -13,15 +13,13 @@ public class Branch {
         this.customerList = new ArrayList<>();
     }
 
-    void addCustomer(String customerName, double initialTransaction) {
-        if(customerName.isEmpty()) {
-            System.out.println("Customer must provide a name");
+
+    void addCustomer(Customer newCustomer) {
+        if(isCustomerInBranch(newCustomer)) {
+            System.out.println("Customer is already a member of the branch");
             return;
-        } else if (initialTransaction <= 0) {
-            System.out.println("Customer must provide initial transaction");
         }
 
-        Customer newCustomer = new Customer(customerName, initialTransaction);
         customerList.add(newCustomer);
     }
 
@@ -59,5 +57,43 @@ public class Branch {
         }
         System.out.println("Customer " + customer.getName() + " was not found");
         return -1;
+    }
+
+    boolean isCustomerInBranch(Customer customer) {
+        if (customer != null) {
+            System.out.println("Customer cannot be null");
+            return false;
+        }
+
+        for(int i=0; i<customerList.size(); i++) {
+            if(customerList.get(i).equals(customer)) {
+                System.out.println("Customer "+ customer.getName() + " found");
+                return true;
+            }
+        }
+        System.out.println("Customer is not in the branch");
+        return false;
+    }
+
+    void printCustomersInBranch() {
+        if(customerList.isEmpty()) {
+            System.out.println("Branch does not contain any customers");
+        }
+
+        for(int i=0; i<customerList.size(); i++) {
+            System.out.println("Customer: " + customerList.get(i).getName() +"\n" +
+                    "Transactions");
+            for(int x=0; i<customerList.get(i).getTransactionList().size(); x++) {
+                customerList.get(i).printTransaction();
+            }
+        }
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
     }
 }

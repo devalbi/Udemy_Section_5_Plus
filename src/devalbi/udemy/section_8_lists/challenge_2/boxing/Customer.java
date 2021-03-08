@@ -7,6 +7,7 @@ public class Customer {
 
     private String name;
     private List<Double> transaction;
+    private Double total;
 
     public Customer(String name) {
         this.name = name;
@@ -45,7 +46,7 @@ public class Customer {
         return name;
     }
 
-    public List<Double> getTransaction() {
+    public List<Double> getTransactionList() {
         return transaction;
     }
 }
