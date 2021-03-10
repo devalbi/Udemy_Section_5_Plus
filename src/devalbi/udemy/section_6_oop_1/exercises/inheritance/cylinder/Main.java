@@ -35,7 +35,7 @@ public class Main {
 
         NOTE: All methods should be defined as public NOT public static.
         NOTE: In total, you have to write 2 classes.
-        NOTE: Do not add a main method to the solution code.
+        NOTE: Do not add a Main method to the solution code.
 
 
         1. Write a class with the name Circle. The class needs one field (instance variable) with name radius of type double.

@@ -16,7 +16,7 @@ EXAMPLE INPUT/OUTPUT:
 * hasSharedDigit(15, 55); → should return true since the digit 5 appears in both numbers
 
 NOTE: The method hasSharedDigit should be defined as public static like we have been doing so far in the course.
-NOTE: Do not add a main method to the solution code.
+NOTE: Do not add a Main method to the solution code.
 */
 
 

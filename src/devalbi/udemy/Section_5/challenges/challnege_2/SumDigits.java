@@ -10,7 +10,7 @@ also we don't want to process negative numbers, so also return -1 for negative n
 
 For example calling the method sumDigits(125) should return 8 since 1 + 2 + 5 = 8.
 Calling the method sumDigits(1) should return -1 as per requirements described above.
-Add some code to the main method to test out the sumDigits method to determine
+Add some code to the Main method to test out the sumDigits method to determine
 that it is working correctly for valid and invalid values passed as arguments.
 
 Hint:

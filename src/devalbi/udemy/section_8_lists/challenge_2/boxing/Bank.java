@@ -70,7 +70,7 @@ public class Bank {
     }
 
     boolean isBranchInBank(Branch branch) {
-        if (branch != null) {
+        if (branch == null) {
             System.out.println("Branch cannot be null");
             return false;
         }
@@ -99,7 +99,6 @@ public class Bank {
         }
         for (Branch bankBranch : branchesList) {
             System.out.println("Branch name: " + bankBranch.getBranchName());
-            bankBranch.printCustomersInBranch();
             bankBranch.printCustomersInBranch();
         }
     }

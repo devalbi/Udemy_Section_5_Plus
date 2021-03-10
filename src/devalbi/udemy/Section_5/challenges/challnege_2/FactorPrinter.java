@@ -19,7 +19,7 @@ For example, the printout for printFactors(10); can be:
 5
 10
 NOTE: The method printFactors should be defined as public static like we have been doing so far in the course.
-NOTE: Do not add a main method to the solution code.
+NOTE: Do not add a Main method to the solution code.
 */
 
 

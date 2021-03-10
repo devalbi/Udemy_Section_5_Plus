@@ -70,5 +70,5 @@ public class MinimumElement {
     There are two scanner objects, one for each of the two methods that are reading in input from the user.
     TIP: Be extremely careful about spaces in the printed message.
     NOTE: All methods should be defined as private static.
-    NOTE: Do not add a main method to the solution code.*/
+    NOTE: Do not add a Main method to the solution code.*/
 

@@ -20,7 +20,7 @@ public class Main {
         //Bad practice to do this though. Should use the correct instance for reference.
 
         /*
-        * With no instance of the main class, methods and fields must be static
+        * With no instance of the Main class, methods and fields must be static
         * */
         int answer = multiplier(6);
         System.out.println("Answer: " + answer);

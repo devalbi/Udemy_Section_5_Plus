@@ -22,7 +22,7 @@ EXAMPLE INPUT/OUTPUT:
 HINT: Use a while or a for loop and check if both numbers can be divided without a remainder.
 HINT: Find the minimum of the two numbers.
 NOTE: The method getGreatestCommonDivisor should be defined as public static like we have been doing so far in the course.
-NOTE: Do not add a main method to the solution code.
+NOTE: Do not add a Main method to the solution code.
 */
 
 public class GreatestCommonDivisor {

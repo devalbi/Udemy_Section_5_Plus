@@ -23,7 +23,7 @@ Example input/output:
 
 TIP: use the remainder operator to check if the number is odd
 NOTE: Both methods  needs to be defined as public static like we have been doing so far in the course.
-NOTE: Do not add a  main method to solution code.
+NOTE: Do not add a  Main method to solution code.
 * */
 
 public class SumOddRange {

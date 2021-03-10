@@ -57,7 +57,7 @@ They don't have to be separated by a space.
 
 NOTE: The methods numberToWords, getDigitCount, reverse should be defined as public static like we have been doing so far in the course.
 NOTE: In total, you have to write 3 methods.
-NOTE: Do not add a main method to the solution code.
+NOTE: Do not add a Main method to the solution code.
 */
 
 public class NumberToWords {

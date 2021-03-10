@@ -87,5 +87,5 @@ You have to represent a point in 2D space. Write a class with the name Point. Th
     NOTE: Try to avoid duplicated code.
     NOTE: All methods should be defined as public NOT public static.
     NOTE: In total, you have to write 7 methods.
-    NOTE: Do not add a main method to the solution code.
+    NOTE: Do not add a Main method to the solution code.
 */

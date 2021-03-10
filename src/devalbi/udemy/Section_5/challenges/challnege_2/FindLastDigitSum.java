@@ -16,7 +16,7 @@ Example input/output
 * sumFirstAndLastDigit(-10); → should return -1, since the parameter is negative and needs to be positive.
 
 NOTE: The method sumFirstAndLastDigit needs to be defined as public static like we have been doing so far in the course.
-NOTE: Do not add a  main method to solution code.
+NOTE: Do not add a  Main method to solution code.
 */
 
 

@@ -42,7 +42,7 @@ public class Main {
 
     NOTE: All methods should be defined as public NOT public static.
     NOTE: In total, you have to write 2 classes.
-    NOTE: Do not add a main method to the solution code.
+    NOTE: Do not add a Main method to the solution code.
 * The Swimming Company has asked you to write an application that calculates the volume of cuboid shaped pools.
 
 

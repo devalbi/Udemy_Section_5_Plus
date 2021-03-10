@@ -30,7 +30,7 @@ public class Burger {
 
     Scanner scanner = new Scanner(System.in); //Using as an instance variable as opposed to a local variable.
     //Scanner.close(); was causing an error when being used in the method, removed it to prevent this error:
-/*    Exception in thread "main" java.util.NoSuchElementException: No line found, at java.base/java.util.Scanner.nextLine(Scanner.java:1651), at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Hamburger.InputIngredient(Hamburger.java:75))*/
+/*    Exception in thread "Main" java.util.NoSuchElementException: No line found, at java.base/java.util.Scanner.nextLine(Scanner.java:1651), at devalbi.udemy.section_7_oop_2.challenges.oopFinal.Hamburger.InputIngredient(Hamburger.java:75))*/
 
     //Constructor for full configuration.
     public Burger(String patty, String bun, double price, String name) {

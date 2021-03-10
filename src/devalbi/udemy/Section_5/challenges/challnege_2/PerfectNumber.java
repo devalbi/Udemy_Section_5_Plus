@@ -23,7 +23,7 @@ EXAMPLE INPUT/OUTPUT:
 HINT: Use a while or for loop.
 HINT: Use the remainder operator.
 NOTE: The method isPerfectNumber should be defined as public static like we have been doing so far in the course.
-NOTE: Do not add a main method to the solution code.
+NOTE: Do not add a Main method to the solution code.
 */
 
 public class PerfectNumber {

@@ -17,7 +17,7 @@ public class ExampleClassB{
     public ExampleClassA getExampleClassA() { return exampleClassA; }
 }
 public class Main{
-    public static void main(String[] args) {
+    public static void Main(String[] args) {
         ExampleClassB exampleClassB = new ExampleClassB(new ExampleClassA("Example")); //Can instanciate class in method call.
         ExampleClassA exampleClassA = new ExampleClassA("Example");
         ExampleClassB exampleClassB1 = new ExampleClassB(exampleClassA);

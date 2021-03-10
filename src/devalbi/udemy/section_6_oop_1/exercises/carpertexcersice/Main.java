@@ -56,5 +56,5 @@ total= 36.45
 
 NOTE: All methods should be defined as public NOT public static.
 NOTE: In total, you have to write 3 classes.
-NOTE: Do not add a main method to the solution code.
+NOTE: Do not add a Main method to the solution code.
 * */

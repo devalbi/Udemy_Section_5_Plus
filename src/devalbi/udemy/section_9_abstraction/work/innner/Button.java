@@ -9,7 +9,7 @@ public class Button {
         this.title = title;
     }
 
-    //Step 2 sets ClickListener from main class local method as the onClickListener
+    //Step 2 sets ClickListener from Main class local method as the onClickListener
     public void setOnClickListnner(OnclickListener onClickListener){
         this.onClickListener = onClickListener;
 

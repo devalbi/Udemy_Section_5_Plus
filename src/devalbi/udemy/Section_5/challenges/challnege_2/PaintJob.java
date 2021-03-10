@@ -115,4 +115,4 @@ Do your best to help Bob.
 NOTE: Use the method Math.ceil to round the number of calculated buckets (double)
 then convert it into an int before returning the value from the methods.
 NOTE: All methods should be defined as public static like we have been doing so far in the course.
-NOTE: Do not add the main method to the solution code.*/
+NOTE: Do not add the Main method to the solution code.*/

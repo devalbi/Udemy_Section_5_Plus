@@ -29,7 +29,7 @@ public class Customer {
     }
 
     void withdrawTransaction(double withdrawalVal) {
-        if (withdrawalVal > 0) {
+        if (withdrawalVal < 0) {
             System.out.println("You must withdraw more than 0");
         }
         //Autoboxing

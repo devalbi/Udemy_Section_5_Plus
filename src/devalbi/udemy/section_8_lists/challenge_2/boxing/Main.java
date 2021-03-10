@@ -24,9 +24,24 @@ public class Main {
         branch2.addCustomer(customer3);
         branch2.addCustomer(customer4);
 
+        bank.printBranchesInBank();
+
         bank.addCustomerToBranch(branch1, customer7, 100.00d);
+        addTransactions(branch1);
+        addTransactions(branch2);
 
         bank.printBranchesInBank();
 
+
+
+        }
+
+    public static void addTransactions(Branch branch) {
+        for(int i = 0; i<branch.getCustomerList().size(); i++) {
+            for(int x = 0; x<=5; x++) {
+                branch.getCustomerList().get(i).withdrawTransaction((x + 1) * 5);
+            }
+        }
     }
 }
+

@@ -21,6 +21,7 @@ public class Branch {
         }
 
         customerList.add(newCustomer);
+        System.out.println("Added new customer. Name: " + newCustomer.getName());
     }
 
     void customerTransaction(Customer customer, double transaction) {
@@ -60,7 +61,7 @@ public class Branch {
     }
 
     boolean isCustomerInBranch(Customer customer) {
-        if (customer != null) {
+        if (customer == null) {
             System.out.println("Customer cannot be null");
             return false;
         }
@@ -81,13 +82,10 @@ public class Branch {
         }
 
         for(int i=0; i<customerList.size(); i++) {
-            System.out.println("Customer: " + customerList.get(i).getName() +"\n" +
-                    "Transactions");
-            for(int x=0; i<customerList.get(i).getTransactionList().size(); x++) {
-                customerList.get(i).printTransaction();
+            System.out.println("Customer: " + customerList.get(i).getName());
+            customerList.get(i).printTransaction();
             }
         }
-    }
 
     public String getBranchName() {
         return branchName;
