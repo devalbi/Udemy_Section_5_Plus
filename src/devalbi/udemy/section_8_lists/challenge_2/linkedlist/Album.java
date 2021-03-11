@@ -1,6 +1,6 @@
 package devalbi.udemy.section_8_lists.challenge_2.linkedlist;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -9,9 +9,15 @@ public class Album {
     private String albumName;
     private List<Song> albumList;
 
+    private static int albumUIDCounter = 0;
+    private int albumUID;
+
     public Album(String albumName) {
         this.albumName = albumName;
-        albumList = new LinkedList<>();
+        albumList = new ArrayList<>();
+
+        albumUIDCounter++;
+        this.albumUID = albumUIDCounter;
     }
 
     public Song createSong(String songName, double songDuration) {
@@ -45,14 +51,27 @@ public class Album {
         while(iterator.hasNext()) {
             Song nextSong = iterator.next();
 
-            if(nextSong.getSongName().equals(song.getSongName())) {
-                if(nextSong.getSongDuration() == song.getSongDuration()) {
-                    return false;
-                }
+            if(nextSong.getSongUID() == song.getSongUID()) {
+                return false;
             }
         }
 
         return true;
+    }
+
+    public boolean isSongInAlbum(Song song) {
+
+        ListIterator<Song> iterator = albumList.listIterator();
+        while(iterator.hasNext()) {
+            Song nextSong = iterator.next();
+
+            if(nextSong.getSongUID() == song.getSongUID()) {
+                return true;
+            }
+        }
+
+        System.out.println("Song: " + song.getSongName() + ", is not in the album " + getAlbumName());
+        return false;
     }
 
     public boolean isSongValid(String newSongName, double newSongDuration) {
@@ -89,5 +108,9 @@ public class Album {
 
     public List<Song> getAlbumList() {
         return albumList;
+    }
+
+    public int getAlbumUID() {
+        return albumUID;
     }
 }

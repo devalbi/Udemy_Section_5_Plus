@@ -5,9 +5,15 @@ public class Song {
     private String songName;
     private double songDuration;
 
+    private static int songUIDCounter = 0;
+    private int songUID;
+
     public Song(String songName, double songDuration) {
         this.songName = songName;
         this.songDuration = songDuration;
+
+        songUIDCounter++;
+        this.songUID = songUIDCounter;
     }
 
     public String getSongName() {
@@ -34,6 +40,10 @@ public class Song {
         }
 
         this.songDuration = songDuration;
+    }
+
+    public int getSongUID() {
+        return songUID;
     }
 
     @Override
