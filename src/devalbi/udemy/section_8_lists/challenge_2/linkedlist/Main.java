@@ -14,6 +14,7 @@ public class Main {
         Song song6 = album.createSong("Mission Impossible", 7.00);
         Song song7 = album.createSong("Mission Impossible", 7.10);
         Song song8 = album.createSong("Mission Impossible 2.0", 7.00);
+        Song song9 = album.createSong("", 00);
 
         album.addSongToAlbum(song1);
         album.addSongToAlbum(song2);
@@ -23,6 +24,7 @@ public class Main {
         album.addSongToAlbum(song6);
         album.addSongToAlbum(song7);
         album.addSongToAlbum(song8);
+        album.addSongToAlbum(song9);
 
 
         album.printSongsInAlbum();

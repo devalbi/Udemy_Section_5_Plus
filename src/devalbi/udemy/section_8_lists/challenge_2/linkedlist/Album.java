@@ -16,14 +16,17 @@ public class Album {
 
     public Song createSong(String songName, double songDuration) {
 
+        if(!isSongValid(songName, songDuration)) {
+            return null;
+        }
         Song newSong = new Song(songName, songDuration);
         return newSong;
     }
 
     public boolean addSongToAlbum(Song newSong) {
 
-        if (isSongInAlbum(newSong)) {
-            System.out.println("Song already exists");
+        if (!isSongValid(newSong)) {
+            System.out.println("Song could not be added to the album");
             return false;
         }
 
@@ -32,7 +35,7 @@ public class Album {
         return true;
     }
 
-    public boolean isSongInAlbum(Song song) {
+    public boolean isSongValid(Song song) {
         if(song == null) {
             System.out.println("Song must not be null");
             return false;
@@ -44,15 +47,15 @@ public class Album {
 
             if(nextSong.getSongName().equals(song.getSongName())) {
                 if(nextSong.getSongDuration() == song.getSongDuration()) {
-                    return true;
+                    return false;
                 }
             }
         }
 
-        return false;
+        return true;
     }
 
-    public boolean isSongInAlbum(String newSongName, double newSongDuration) {
+    public boolean isSongValid(String newSongName, double newSongDuration) {
         if((newSongName.isEmpty()) || (newSongDuration <= 0)) {
             System.out.println("Song must contain mandatory information: Song Name and Duration");
             return false;
@@ -61,10 +64,10 @@ public class Album {
         for (Song song : albumList) {
             if ((song.getSongName().equals(newSongName)) && (song.getSongDuration() == newSongDuration)) {
                 System.out.println("Song is already in album");
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     void printSongsInAlbum() {
