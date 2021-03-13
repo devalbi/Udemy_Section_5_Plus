@@ -6,8 +6,8 @@ public class Main {
 
         Playlist playlist = new Playlist("2021 Charts");
 
-        Album album1 = new Album("Greatest Hits");
-        Album album2 = new Album("Greatest Hits");
+        Album album1 = new Album("First Album");
+        Album album2 = new Album("Second Album");
 
         Song song1 = album1.createSong("Oh Ye", 02.00);
         Song song2 = album1.createSong("Oh Ye", 02.00);
@@ -15,8 +15,7 @@ public class Main {
         Song song4 = album1.createSong("Crying", 5.45);
         Song song5 = album2.createSong("You and Me", 4.00);
         Song song6 = album2.createSong("Mission Impossible", 7.00);
-        Song song7 = album2.createSong("Mission Impossible", 7.10);
-        Song song8 = album2.createSong("Mission Impossible 2.0", 7.00);
+        Song song7 = album2.createSong("Mission Impossible 2.0", 7.00);
         Song song9 = album2.createSong("", 00);
 
         album1.addSongToAlbum(song1);
@@ -26,7 +25,6 @@ public class Main {
         album2.addSongToAlbum(song5);
         album2.addSongToAlbum(song6);
         album2.addSongToAlbum(song7);
-        album2.addSongToAlbum(song8);
         album2.addSongToAlbum(song9);
         album2.addSongToAlbum(song6);
 
@@ -34,10 +32,14 @@ public class Main {
         album1.printSongsInAlbum();
         album2.printSongsInAlbum();
 
+        System.out.println("");
+
         playlist.addSongToPlaylist(album1, song1);
         playlist.addSongToPlaylist(album1, song2);
         playlist.addSongToPlaylist(album1, song3);
         playlist.addSongToPlaylist(album1, song4);
+
+        //why adding
         playlist.addSongToPlaylist(album1, song4);
         playlist.addSongToPlaylist(album1, song5);
 
@@ -45,10 +47,10 @@ public class Main {
         playlist.addSongToPlaylist(album2, song5);
         playlist.addSongToPlaylist(album2, song6);
         playlist.addSongToPlaylist(album2, song7);
-        playlist.addSongToPlaylist(album2, song8);
 
         playlist.printSongsInPlaylist();
 
+        playlist.startMenu();
 
     }
 

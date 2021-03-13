@@ -29,9 +29,14 @@ public class Album {
         return newSong;
     }
 
+
     public boolean addSongToAlbum(Song newSong) {
 
-        if (!isSongValid(newSong)) {
+        if(!isSongValid(newSong)) {
+            return false;
+        }
+
+        if (isSongInAlbum(newSong)) {
             System.out.println("Song could not be added to the album");
             return false;
         }
@@ -41,37 +46,34 @@ public class Album {
         return true;
     }
 
-    public boolean isSongValid(Song song) {
-        if(song == null) {
-            System.out.println("Song must not be null");
-            return false;
-        }
-
-        ListIterator<Song> iterator = albumList.listIterator();
-        while(iterator.hasNext()) {
-            Song nextSong = iterator.next();
-
-            if(nextSong.getSongUID() == song.getSongUID()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     public boolean isSongInAlbum(Song song) {
 
         ListIterator<Song> iterator = albumList.listIterator();
         while(iterator.hasNext()) {
-            Song nextSong = iterator.next();
 
-            if(nextSong.getSongUID() == song.getSongUID()) {
+            Song nextSong = iterator.next();
+            if ((song.getSongName().equals(nextSong.getSongName())) && (song.getSongDuration() == nextSong.getSongDuration())) {
                 return true;
             }
         }
 
-        System.out.println("Song: " + song.getSongName() + ", is not in the album " + getAlbumName());
         return false;
+    }
+
+
+    public boolean isSongValid(Song songToCheck) {
+
+        if(songToCheck == null) {
+            return false;
+        }
+
+        if((songToCheck.getSongName().isEmpty()) || (songToCheck.getSongDuration() <= 0)) {
+            System.out.println("Song must contain mandatory information: Song Name and Duration");
+            return false;
+        }
+
+        return true;
     }
 
     public boolean isSongValid(String newSongName, double newSongDuration) {
@@ -80,12 +82,6 @@ public class Album {
             return false;
         }
 
-        for (Song song : albumList) {
-            if ((song.getSongName().equals(newSongName)) && (song.getSongDuration() == newSongDuration)) {
-                System.out.println("Song is already in album");
-                return false;
-            }
-        }
         return true;
     }
 
