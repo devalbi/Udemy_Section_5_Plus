@@ -9,23 +9,36 @@ public class Player implements ISaveable{
     private String weapon;
     private int hitPoints;
     private int strength;
+    private List<String> playerList;
 
     public Player(String name, int hitPoints, int strength) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.strength = strength;
         weapon = "sword";
+
+        playerList = new ArrayList<>();
     }
 
     @Override
     public List<String> write() {
-        List<String> playerList = new ArrayList<>();
-        return null;
+        return playerList;
     }
 
     @Override
     public void read(List<String> stringList) {
+        if(stringList == null) {
+            return;
+        }
 
+        if(stringList.isEmpty()) {
+            return;
+        }
+
+        stringList.add(getName());
+        stringList.add(String.valueOf(getHitPoints()));
+        stringList.add(String.valueOf(getStrength()));
+        stringList.add(getWeapon());
     }
 
 
