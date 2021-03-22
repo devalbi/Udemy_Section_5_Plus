@@ -67,11 +67,42 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public boolean removeItem(ListItem listItemToRemove) {
-        return false;
+        if(listItemToRemove == null) {
+            return false;
+        }
+
+        if(listItemToRemove.equals(this.root)) {
+            ListItem itemAfterRoot = this.root.next();
+
+            itemAfterRoot.setPrevious(this.root.previous());
+            this.root = itemAfterRoot;
+            return true;
+        }
+
+        if(listItemToRemove.previous() == null) {
+            ListItem itemBeforeTail = listItemToRemove.previous();
+            itemBeforeTail.setNext(listItemToRemove.next());
+            return true;
+        }
+
+        ListItem previousListItem = listItemToRemove.leftLink;
+        ListItem nextListItem = listItemToRemove.rightLink;
+
+        previousListItem.setNext(nextListItem);
+        return true;
     }
 
     @Override
     public void traverse(ListItem root) {
 
+        if(root == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+
+        ListItem nextListItem = this.root;
+        while(nextListItem.next() != null) {
+            System.out.println(nextListItem.getValue().getValue());
+        }
     }
 }

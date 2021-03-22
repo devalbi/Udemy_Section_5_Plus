@@ -20,5 +20,95 @@ package devalbi.udemy.section_9_abstraction.challenge_2.abstractclass;
 * */
 
 
-public class SearchTree {
+public class SearchTree implements NodeList {
+
+    private ListItem root;
+
+    public SearchTree(ListItem root) {
+        this.root = root;
+    }
+
+    @Override
+    public ListItem getRoot() {
+        return this.root;
+    }
+
+    @Override
+    public boolean addItem(ListItem listItemToAdd) {
+        if(listItemToAdd == null) {
+            return false;
+        }
+
+        ListItem nextListItem = this.root;
+        boolean hasNextLinkItem = true;
+
+        while(hasNextLinkItem) {
+            int compareValue = nextListItem.compareTo(listItemToAdd);
+
+            if(compareValue == 0) {
+                return false;
+            } else if (compareValue > 1) {
+                if(nextListItem.next() == null) {
+                    nextListItem.setNext(listItemToAdd);
+                    return true;
+                }
+                nextListItem = nextListItem.next();
+                break;
+            } else if (compareValue < 1) {
+                listItemToAdd.setPrevious(nextListItem.previous());
+                nextListItem.setPrevious(listItemToAdd);
+                return true;
+            }
+
+            nextListItem = nextListItem.next();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean removeItem(ListItem listItemToRemove) {
+        if(listItemToRemove == null) {
+            return false;
+        }
+
+        if(listItemToRemove.equals(this.root)) {
+            ListItem itemAfterRoot = this.root.next();
+
+            itemAfterRoot.setPrevious(this.root.previous());
+            this.root = itemAfterRoot;
+            return true;
+        }
+
+        if(listItemToRemove.previous() == null) {
+            ListItem itemBeforeTail = listItemToRemove.previous();
+            itemBeforeTail.setNext(listItemToRemove.next());
+            return true;
+        }
+
+        ListItem previousListItem = listItemToRemove.leftLink;
+        ListItem nextListItem = listItemToRemove.rightLink;
+
+        previousListItem.setNext(nextListItem);
+        return true;
+    }
+
+     void performRemoval(ListItem itemToRemove, ListItem parentItem) {
+
+    
+    }
+
+    @Override
+    public void traverse(ListItem root) {
+        if(root == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+
+        ListItem nextListItem = this.root;
+        while(nextListItem.next() != null) {
+            System.out.println(nextListItem.getValue().getValue());
+        }
+    }
+    }
 }

@@ -33,9 +33,6 @@ public class Node extends ListItem {
     @Override
     ListItem setNext(ListItem newRightLink) {
 
-        if(newRightLink == null) {
-            return null;
-        }
         this.rightLink = newRightLink;
         return rightLink;
     }
@@ -48,9 +45,6 @@ public class Node extends ListItem {
     @Override
     ListItem setPrevious(ListItem newLeftLink) {
 
-        if(newLeftLink == null) {
-            return null;
-        }
         this.leftLink = newLeftLink;
         return newLeftLink;
     }
