@@ -9,4 +9,10 @@ package devalbi.udemy.section_9_abstraction.challenge_2.abstractclass;
 
 
 public interface NodeList {
+
+    ListItem getRoot();
+    boolean addItem(ListItem listItemToAdd);
+    boolean removeItem(ListItem listItemToRemove);
+    void traverse(ListItem root);
+
 }

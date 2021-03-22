@@ -18,9 +18,11 @@ package devalbi.udemy.section_9_abstraction.challenge_2.abstractclass;
 
 
 public class Node extends ListItem {
+    private SampleObject nodeObject;
 
     public Node(SampleObject linkObject) {
         super(linkObject);
+        nodeObject = this.getValue();
     }
 
     @Override
@@ -55,9 +57,14 @@ public class Node extends ListItem {
 
     @Override
     int compareTo(ListItem listItem) {
+        if(listItem == null) {
+            return -1;
+        }
 
-      //  if(String.valueOf())
-        return 0;
+        SampleObject comparisonObject = listItem.getValue();
+        int compareValue = comparisonObject.getValue().compareTo(nodeObject.getValue());
+
+        return compareValue;
     }
 
     @Override

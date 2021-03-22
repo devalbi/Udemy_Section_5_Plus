@@ -17,6 +17,61 @@ package devalbi.udemy.section_9_abstraction.challenge_2.abstractclass;
         * otherwise print each value on a separate line.
 * */
 
-public class MyLinkedList {
+public class MyLinkedList implements NodeList {
 
+    private ListItem root;
+
+    public MyLinkedList(ListItem root) {
+        this.root = root;
+    }
+
+
+
+    @Override
+    public ListItem getRoot() {
+        return root;
+    }
+
+    @Override
+    public boolean addItem(ListItem listItemToAdd) {
+        if(listItemToAdd == null) {
+            return false;
+        }
+
+        ListItem nextListItem = this.root;
+        boolean hasNextLinkItem = true;
+
+        while(hasNextLinkItem) {
+            int compareValue = nextListItem.compareTo(listItemToAdd);
+
+            if(compareValue == 0) {
+                return false;
+            } else if (compareValue > 1) {
+                if(nextListItem.next() == null) {
+                    nextListItem.setNext(listItemToAdd);
+                    return true;
+                }
+                nextListItem = nextListItem.next();
+                break;
+            } else if (compareValue < 1) {
+                listItemToAdd.setPrevious(nextListItem.previous());
+                nextListItem.setPrevious(listItemToAdd);
+                return true;
+            }
+
+            nextListItem = nextListItem.next();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean removeItem(ListItem listItemToRemove) {
+        return false;
+    }
+
+    @Override
+    public void traverse(ListItem root) {
+
+    }
 }
