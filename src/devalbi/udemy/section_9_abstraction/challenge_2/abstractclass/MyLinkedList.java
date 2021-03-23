@@ -45,17 +45,43 @@ public class MyLinkedList implements NodeList {
             int compareValue = nextListItem.compareTo(listItemToAdd);
 
             if(compareValue == 0) {
+                System.out.println("List Item " + listItemToAdd.getValue().getValue() + " already in the list");
                 return false;
-            } else if (compareValue > 1) {
+            } else if (compareValue > 0) {
+
                 if(nextListItem.next() == null) {
+                    listItemToAdd.setPrevious(nextListItem);
                     nextListItem.setNext(listItemToAdd);
+
+                    System.out.println("Item added: " +listItemToAdd.getValue().getValue() + ", " +
+                            ", Left Link: " + listItemToAdd.previous().getValue().getValue());
                     return true;
                 }
+
                 nextListItem = nextListItem.next();
-                break;
-            } else if (compareValue < 1) {
-                listItemToAdd.setPrevious(nextListItem.previous());
+                continue;
+
+            } else if (compareValue < 0) {
+
+
+                //TODO sort out issue here
+                listItemToAdd.setNext(nextListItem);
+                if(nextListItem.previous() != null) {
+                    listItemToAdd.setPrevious(nextListItem.previous());
+                }
+
+                nextListItem.previous().setNext(listItemToAdd);
                 nextListItem.setPrevious(listItemToAdd);
+
+                System.out.println("Item " +listItemToAdd.getValue().getValue() + " added ");
+
+                if(listItemToAdd.previous() != null) {
+                    System.out.print(" Left Link: " + listItemToAdd.previous().getValue().getValue());
+                }
+
+                if(listItemToAdd.next() != null) {
+                    System.out.println("  Right Link: " + listItemToAdd.next().getValue().getValue());
+                }
                 return true;
             }
 
@@ -67,29 +93,45 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public boolean removeItem(ListItem listItemToRemove) {
-        if(listItemToRemove == null) {
+        if ((listItemToRemove == null) || (this.root == null)) {
             return false;
         }
 
-        if(listItemToRemove.equals(this.root)) {
-            ListItem itemAfterRoot = this.root.next();
 
-            itemAfterRoot.setPrevious(this.root.previous());
-            this.root = itemAfterRoot;
-            return true;
+        ListItem currentListItem = this.root;
+        boolean hasNextItem = true;
+
+        while (hasNextItem) {
+
+            if (currentListItem.equals(listItemToRemove)) {
+
+                if (listItemToRemove.equals(this.root)) {
+                    ListItem itemAfterRoot = this.root.next();
+
+                    itemAfterRoot.setPrevious(this.root.previous());
+                    this.root = itemAfterRoot;
+                    return true;
+
+                } else if (currentListItem.previous() == null) {
+
+                    ListItem itemBeforeTail = currentListItem.previous();
+                    itemBeforeTail.setNext(currentListItem.next());
+                    return true;
+
+                } else {
+
+                    ListItem previousListItem = currentListItem.leftLink;
+                    ListItem nextListItem = currentListItem.rightLink;
+
+                    nextListItem.setPrevious(previousListItem);
+                    previousListItem.setNext(nextListItem);
+
+                    return true;
+                }
+            }
         }
 
-        if(listItemToRemove.previous() == null) {
-            ListItem itemBeforeTail = listItemToRemove.previous();
-            itemBeforeTail.setNext(listItemToRemove.next());
-            return true;
-        }
-
-        ListItem previousListItem = listItemToRemove.leftLink;
-        ListItem nextListItem = listItemToRemove.rightLink;
-
-        previousListItem.setNext(nextListItem);
-        return true;
+        return false;
     }
 
     @Override
@@ -103,6 +145,7 @@ public class MyLinkedList implements NodeList {
         ListItem nextListItem = this.root;
         while(nextListItem.next() != null) {
             System.out.println(nextListItem.getValue().getValue());
+            nextListItem = nextListItem.next();
         }
     }
 }

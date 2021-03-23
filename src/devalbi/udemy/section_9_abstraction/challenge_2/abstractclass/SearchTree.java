@@ -68,33 +68,54 @@ public class SearchTree implements NodeList {
 
     @Override
     public boolean removeItem(ListItem listItemToRemove) {
-        if(listItemToRemove == null) {
+        if ((listItemToRemove == null) || (this.root == null)) {
             return false;
         }
 
-        if(listItemToRemove.equals(this.root)) {
-            ListItem itemAfterRoot = this.root.next();
 
-            itemAfterRoot.setPrevious(this.root.previous());
-            this.root = itemAfterRoot;
-            return true;
+        ListItem currentListItem = this.root;
+        boolean hasNextItem = true;
+
+        while (hasNextItem) {
+
+            if (currentListItem.equals(listItemToRemove)) {
+
+                if (listItemToRemove.equals(this.root)) {
+                    ListItem itemAfterRoot = this.root.next();
+
+                    itemAfterRoot.setPrevious(this.root.previous());
+                    this.root = itemAfterRoot;
+
+                    System.out.println("Item Removed: " + currentListItem.getValue().getValue() +
+                            ", new root is" + this.getRoot().getValue().getValue()) ;
+                    return true;
+
+                } else if (currentListItem.previous() == null) {
+
+                    ListItem itemBeforeTail = currentListItem.previous();
+                    itemBeforeTail.setNext(currentListItem.next());
+
+                    System.out.println("Item Removed: " + currentListItem.getValue().getValue()) ;
+                    return true;
+
+                } else {
+
+                    performRemoval(currentListItem,  currentListItem.previous());
+                    return true;
+                }
+            }
         }
 
-        if(listItemToRemove.previous() == null) {
-            ListItem itemBeforeTail = listItemToRemove.previous();
-            itemBeforeTail.setNext(listItemToRemove.next());
-            return true;
-        }
-
-        ListItem previousListItem = listItemToRemove.leftLink;
-        ListItem nextListItem = listItemToRemove.rightLink;
-
-        previousListItem.setNext(nextListItem);
-        return true;
+        return false;
     }
 
-     void performRemoval(ListItem itemToRemove, ListItem parentItem) {
+     private void performRemoval(ListItem itemToRemove, ListItem parentItem) {
 
+        //assumed partent item is to left of itemToRemove
+        parentItem.setNext(itemToRemove.next());
+        itemToRemove.next().setPrevious(parentItem);
+         System.out.println(itemToRemove.getValue().getValue() +" is removed, Parent item is now connected to " +
+                  parentItem.next() + " and parent is left of " + parentItem.next().getValue());
     
     }
 
@@ -108,7 +129,8 @@ public class SearchTree implements NodeList {
         ListItem nextListItem = this.root;
         while(nextListItem.next() != null) {
             System.out.println(nextListItem.getValue().getValue());
+            nextListItem = nextListItem.next();
         }
-    }
+        System.out.println("End of the List");
     }
 }

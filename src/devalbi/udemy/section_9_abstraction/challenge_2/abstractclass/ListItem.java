@@ -37,5 +37,6 @@ public abstract class ListItem {
     public void setValue(SampleObject value) {
         this.value = value;
     }
+
 }
 
