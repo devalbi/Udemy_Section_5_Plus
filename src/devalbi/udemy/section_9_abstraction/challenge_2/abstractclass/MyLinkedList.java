@@ -57,24 +57,21 @@ public class MyLinkedList implements NodeList {
                             ", Left Link: " + listItemToAdd.previous().getValue().getValue());
                     return true;
                 }
-
                 nextListItem = nextListItem.next();
                 continue;
-
             } else if (compareValue < 0) {
-
-
-                //TODO sort out issue here
-                listItemToAdd.setNext(nextListItem);
-                if(nextListItem.previous() != null) {
-                    listItemToAdd.setPrevious(nextListItem.previous());
+                if(nextListItem.equals(this.root)) {
+                    this.root = listItemToAdd;
                 }
+                if(nextListItem.previous() != null) {
+                    nextListItem.previous().setNext(listItemToAdd);
+                    listItemToAdd.setPrevious(nextListItem.previous());
 
-                nextListItem.previous().setNext(listItemToAdd);
+                }
                 nextListItem.setPrevious(listItemToAdd);
+                listItemToAdd.setNext(nextListItem);
 
                 System.out.println("Item " +listItemToAdd.getValue().getValue() + " added ");
-
                 if(listItemToAdd.previous() != null) {
                     System.out.print(" Left Link: " + listItemToAdd.previous().getValue().getValue());
                 }
@@ -108,17 +105,30 @@ public class MyLinkedList implements NodeList {
                 if (listItemToRemove.equals(this.root)) {
                     ListItem itemAfterRoot = this.root.next();
 
+
+                    System.out.println("Removing Root: " + currentListItem.getValue().getValue() +
+                            ", comparing with this.root = " + this.root.getValue().getValue());
+
                     itemAfterRoot.setPrevious(this.root.previous());
                     this.root = itemAfterRoot;
+
+                    System.out.println("New Root: " + itemAfterRoot.getValue().getValue());
                     return true;
 
-                } else if (currentListItem.previous() == null) {
+                } else if (currentListItem.next() == null) {
 
                     ListItem itemBeforeTail = currentListItem.previous();
+                    //setting to null
                     itemBeforeTail.setNext(currentListItem.next());
+
+                    System.out.println("Removing Tail: " + currentListItem.getValue().getValue() +
+                            ", New tail is = " + itemBeforeTail.getValue().getValue());
+
                     return true;
 
                 } else {
+
+                    System.out.println("Removing Item: " + currentListItem.getValue().getValue());
 
                     ListItem previousListItem = currentListItem.leftLink;
                     ListItem nextListItem = currentListItem.rightLink;
@@ -129,6 +139,7 @@ public class MyLinkedList implements NodeList {
                     return true;
                 }
             }
+            currentListItem = currentListItem.next();
         }
 
         return false;

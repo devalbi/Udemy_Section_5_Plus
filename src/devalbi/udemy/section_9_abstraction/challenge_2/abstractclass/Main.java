@@ -32,7 +32,7 @@ public class Main {
         Node listItem13 = new Node(sampleObject13);
 
 
-       MyLinkedList myLinkedList = new MyLinkedList(listItem1);
+       SearchTree myLinkedList = new SearchTree(listItem1);
         myLinkedList.addItem(listItem2);
         myLinkedList.addItem(listItem3);
         myLinkedList.addItem(listItem4);
@@ -46,13 +46,21 @@ public class Main {
         myLinkedList.addItem(listItem12);
         myLinkedList.addItem(listItem13);
 
-        myLinkedList.traverse(listItem1);
+        ListItem root = myLinkedList.getRoot();
+
+        myLinkedList.traverse(root);
 
         myLinkedList.removeItem(listItem1);
+        System.out.println("");
+        myLinkedList.traverse(root);
+        System.out.println("");
 
+        myLinkedList.removeItem(root);
+        myLinkedList.traverse(root);
 
-        myLinkedList.traverse(listItem1);
-        myLinkedList.traverse(listItem2);
+        System.out.println("");
+        myLinkedList.removeItem(listItem7);
+        myLinkedList.traverse(root);
     }
     
 }
