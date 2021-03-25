@@ -7,6 +7,7 @@ Main {
         FootballPlayer joe = new FootballPlayer("Joe");
         BaseballPlayer pat =  new BaseballPlayer("Pat");
         SoccerPlayer beckham = new SoccerPlayer("Beckham");
+        Player newPlayer = new SoccerPlayer("Test");
 
         Team<FootballPlayer> adelaideCrows = new Team<>("Adelaide Crows");
         adelaideCrows.addPlayer(joe);

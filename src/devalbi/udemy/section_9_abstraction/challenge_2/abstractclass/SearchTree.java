@@ -163,6 +163,7 @@ public class SearchTree implements NodeList {
             System.out.println("The list is empty");
             return;
         }
+        
 
         ListItem nextListItem = this.root;
         while(nextListItem.next() != null) {
