@@ -8,5 +8,8 @@ public class Main {
         System.out.println(Series.nSum(10));
         Series.factorial(10);
         Series.fibonacci(10);
+
+
+        X x = new X();
     }
 }
