@@ -27,7 +27,7 @@ public class Account {
     }
 
     public void withdrawl(int amount){
-        //Var is not allowed to be protected or private within class.
+        //Var is not allowed to be protected or private within class/method.
 //        private int withdrawl = -amount;
 //        protected int withdrawl = -amount;
         int withdrawl = -amount;
