@@ -29,15 +29,20 @@ public class X {
         x();
     }
 
+    protected void x() {
 
-    protected int x() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number for times tables:");
+
         if (scanner.hasNextInt()){
             this.x = scanner.nextInt();
-             for(int x = 0; x <= this.x; x++) {
-                 System.out.println(this.x + " x " + x + " = " + (this.x = x));
-            }
+            scanner.nextLine();
         }
-        return -1;
+
+        for(int x = 0; x <= this.x; x++) {
+            System.out.println(this.x + " x " + x + " = " + (this.x * x));
+        }
+
+        scanner.close();
     }
 }
