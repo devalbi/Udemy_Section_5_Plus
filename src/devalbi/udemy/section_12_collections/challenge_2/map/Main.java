@@ -63,13 +63,18 @@ public class Main {
            System.out.println();
 
            String direction = scanner.nextLine().toUpperCase();
-           String[] directionWords = direction.split(" ");
-            for (String word : directionWords) {
 
-                if(directions.containsKey(word)) {
-                    direction = directions.get(word);
-                }
-            }
+           if(direction.length() > 1) {
+               String[] directionWords = direction.split(" ");
+
+               for (String word : directionWords) {
+
+                   if (directions.containsKey(word)) {
+                       direction = directions.get(word);
+                       break;
+                   }
+               }
+           }
 
            if(exits.containsKey(direction)) {
                loc = exits.get(direction);
