@@ -16,8 +16,8 @@ public class Main {
         footballLeagueTable.addTeamToLeague(bray);
         footballLeagueTable.addTeamToLeague(roundwood);
 
-
         footballLeagueTable.printLeagueTable();
+
 
     }
 }

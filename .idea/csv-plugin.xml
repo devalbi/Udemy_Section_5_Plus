@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/src/devalbi/udemy/java_cert/section_8_challenge/CardBuster.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/devalbi/udemy/section_10_generics/challenge2/LeagueTable.java">
           <value>
             <Attribute>
