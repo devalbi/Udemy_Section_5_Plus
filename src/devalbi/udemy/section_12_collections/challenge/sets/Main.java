@@ -9,9 +9,9 @@ public class Main {
         System.out.println(aHashCode("Test", BodyType.STAR));
     }
 
-/*    public static int aHashCode(String name, BodyType bodyType) {
+    public static int aHashCode(String name, BodyType bodyType) {
         int hashcode = name.hashCode() + 57;
         hashcode += hashcode + bodyType.hashCode() + 57;
         return hashcode;
-    }*/
+    }
 }
