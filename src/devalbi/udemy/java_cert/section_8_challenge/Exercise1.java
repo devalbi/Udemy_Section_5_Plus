@@ -35,32 +35,45 @@ public class Exercise1 {
         int player2Wins = 0;
 
         for (int i = 0; i < player1.length; i++) {
+
             if (player1[i] > player2[i]) {
+
                 System.out.println("Player 1 wins game of " + player1[i] + " to " + player2[i] + ".");
                 player1Wins++;
+
             } else if (player1[i] < player2[i]) {
-                System.out.println("Player 2 wins game of " + player1[i] + "to " + player2[i] + ".");
+
+                System.out.println("Player 2 wins game of " + player2[i] + " to " + player1[i] + ".");
                 player2Wins++;
+
             } else {
+
                 System.out.println("Game was a tie with " + player1[i] + " and " + player2[i]);
+
             }
         }
 
         if (player1Wins > player2Wins) {
+
             System.out.println("Player One wins!!! " +
                     " Winning " + player1Wins +
                     " compared to Player 2 " + player2Wins +
                     "wins.");
+
         } else if (player1Wins < player2Wins) {
+
             System.out.println("Player Two wins!!! " +
                     " Winning " + player2Wins +
                     " compared to Player 1 " + player1Wins +
                     "wins.");
+
         } else {
+
             System.out.println("It is a tie with player 1 winning " +
                     " " + player1Wins +
                     " games compared to Player 2's " + player2Wins +
                     "wins.");
+
         }
     }
 }
