@@ -1,6 +1,9 @@
 package devalbi.udemy.section_12_collections.work.sets;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -81,6 +84,7 @@ public class Main {
             System.out.println("\t" + planet.getName());
         }
 
+
         HeavenlyBody body = solarSystem.get("Jupiter");
         System.out.println("Moons of " + body.getName());
         for(HeavenlyBody jupiterMoons : body.getSatellities()) {
@@ -125,6 +129,6 @@ public class Main {
         System.out.println(newSet.size()+
                 " New Set: " +
                 newSet);
-    }
 
+    }
 }
