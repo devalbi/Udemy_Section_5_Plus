@@ -105,7 +105,7 @@ public class Main {
             return 0;
         }
       //  if(stockList.sellStock(item, quantity) != 0) {
-        if(stockItem.stockMinusReservedStock(quantity) >= 0) {
+        if(stockItem.availableStock(quantity) >= 0) {
             basket.addToBasket(stockItem, quantity);
             return quantity;
         }

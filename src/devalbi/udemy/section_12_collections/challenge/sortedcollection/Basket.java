@@ -37,8 +37,7 @@ public class Basket {
             StockItem stockItem = item.getKey();
             int basketQty = item.getValue();
 
-            stockItem.adjustStock(-basketQty);
-            stockItem.removeReservedStock(basketQty);
+            stockItem.finaliseStock(basketQty);
         }
         list.clear();
     }
@@ -64,7 +63,7 @@ public class Basket {
     }
 
     public boolean checkReservedStock(StockItem item, int quantityToReserve) {
-        if(item.stockMinusReservedStock(quantityToReserve) >= 0) {
+        if(item.availableStock(quantityToReserve) >= 0) {
             return true;
         } else {
             return false;
@@ -82,7 +81,7 @@ public class Basket {
         for (Map.Entry<StockItem, Integer> item : list.entrySet()) {
             s = s + item.getKey() + ". " + item.getValue() + " reserved" +
                     " and this.reserved = " + item.getKey().getReservedStock() +
-                    " and available stock equals: " + item.getKey().stockMinusReservedStock() +"\n";
+                    " and available stock equals: " + item.getKey().availableStock() +"\n";
             totalCost += item.getKey().getPrice() * item.getValue();
         }
         return s + "Total cost " + totalCost;

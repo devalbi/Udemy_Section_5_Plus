@@ -51,9 +51,7 @@ public class StockItem implements Comparable<StockItem> {
     }
 
     public void reserveStock(int reservedQuantity) {
-        int checkReservedQuantity = this.quantityStock - reservedQuantity;
-
-        if(checkReservedQuantity >= 0) {
+        if(availableStock() <= availableStock()) {
             this.reservedStock += reservedQuantity;
         }
     }
@@ -62,7 +60,6 @@ public class StockItem implements Comparable<StockItem> {
         if(reservedQuantityToRemove < 0) {
             return;
         }
-
         if(this.reservedStock < reservedQuantityToRemove) {
             //If user tries to remove more stock than is reserved, sets to Zero
             this.reservedStock = 0;
@@ -71,12 +68,22 @@ public class StockItem implements Comparable<StockItem> {
         }
     }
 
-    public int stockMinusReservedStock() {
+    public int availableStock() {
         return this.quantityStock - this.reservedStock;
     }
 
-    public int stockMinusReservedStock(int newReservedStock) {
+    public int availableStock(int newReservedStock) {
         return (this.quantityStock - this.reservedStock) - newReservedStock;
+    }
+
+    public int finaliseStock(int quantity) {
+        if(quantity <= 0) {
+            return 0;
+        }
+
+        this.quantityStock -= quantity;
+        this.reservedStock -= quantity;
+        return quantity;
     }
 
     @Override
