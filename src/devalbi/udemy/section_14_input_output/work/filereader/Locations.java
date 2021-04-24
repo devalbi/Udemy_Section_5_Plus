@@ -1,8 +1,7 @@
 package devalbi.udemy.section_14_input_output.work.filereader;
 
-import sun.tools.tree.InstanceOfExpression;
 
-import java.io.File;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
