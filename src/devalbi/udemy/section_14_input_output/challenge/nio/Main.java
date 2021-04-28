@@ -1,4 +1,4 @@
-package devalbi.udemy.section_14_input_output.work.niowork.nioreadwrite;
+package devalbi.udemy.section_14_input_output.challenge.nio;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,11 +10,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-	    try(FileOutputStream binFile = new FileOutputStream("data.dat");
+        try(FileOutputStream binFile = new FileOutputStream("data.dat");
             FileChannel binChannel = binFile.getChannel()) {
 
             byte[] outputBytes = "Hello World!".getBytes();
-            ByteBuffer buffer = ByteBuffer.wrap(outputBytes);
+            ByteBuffer buffer = ByteBuffer.allocate(outputBytes.length);
+            System.out.println("outBytes length = " + outputBytes.length);
+            buffer.put(outputBytes);
+            buffer.flip();
             int numBytes = binChannel.write(buffer);
             System.out.println("numBytes written was: " + numBytes);
 
@@ -75,7 +78,7 @@ public class Main {
 //            System.out.println(int2);
 
         } catch(IOException e) {
-	        e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }
