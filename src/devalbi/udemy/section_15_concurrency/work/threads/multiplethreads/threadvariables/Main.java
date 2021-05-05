@@ -1,4 +1,4 @@
-package devalbi.udemy.section_15_concurrency.work.threads.multiplethreads;
+package devalbi.udemy.section_15_concurrency.work.threads.multiplethreads.threadvariables;
 
 public class Main {
 
@@ -12,19 +12,6 @@ public class Main {
 
         t1.start();
         t2.start();
-
-//        Countdown countdown = new Countdown();
-//
-//        CountdownThread t1 = new CountdownThread(countdown);
-//        Thread thread1 = new Thread(t1);
-//        thread1.setName("Thread 1");
-//
-//        CountdownThread t2 = new CountdownThread(countdown);
-//        Thread thread2 = new Thread(t2);
-//        thread2.setName("Thread 2");
-//
-//        thread1.start();
-//        thread2.start();
     }
 }
 
@@ -46,13 +33,15 @@ class Countdown {
                 color = ThreadColor.ANSI_GREEN;
         }
 
-        for(i=10; i > 0; i--) {
-            System.out.println(color + Thread.currentThread().getName() + ": i =" + i);
+        synchronized(this) {
+            for(i=10; i > 0; i--) {
+                System.out.println(color + Thread.currentThread().getName() + ": i =" + i);
+            }
         }
     }
 }
 
-class CountdownThread extends Thread { //implements Runnable {
+class CountdownThread extends Thread {
     private Countdown threadCountdown;
 
     public CountdownThread(Countdown countdown) {
