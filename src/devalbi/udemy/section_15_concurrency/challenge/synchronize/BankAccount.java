@@ -4,6 +4,7 @@ final class BankAccount {
 
     private double balance;
     private String accountNumber;
+    private Object object = new Object();
 
     public BankAccount(String accountNumber, double initialBalance) {
         this.accountNumber = accountNumber;
@@ -11,13 +12,16 @@ final class BankAccount {
     }
 
     public void deposit(double amount) {
-
-        balance += amount;
+        synchronized (object) {
+            balance += amount;
+        }
         System.out.println("New balance is " + this.balance);
     }
 
     public void withdraw(double amount) {
-        balance -= amount;
+        synchronized (object) {
+            balance -= amount;
+        }
         System.out.println("New balance is " + this.balance);
     }
 

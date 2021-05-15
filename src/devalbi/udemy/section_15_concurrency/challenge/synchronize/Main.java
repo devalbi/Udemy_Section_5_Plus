@@ -24,7 +24,7 @@ public class Main {
                     bankAccount.deposit(300);
                     bankAccount.withdraw(50);
                 }
-            }.start();
+            });
 
             Thread t2 = new Thread(new Runnable() {
                 @Override
@@ -33,6 +33,9 @@ public class Main {
                     bankAccount.withdraw(100);
                 }
             });
+
+            t1.start();
+            t2.start();
 
         } finally {
             endTime = System.nanoTime();
