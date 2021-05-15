@@ -1,4 +1,4 @@
-package devalbi.udemy.section_15_concurrency.challenge.reentrantlocks;
+package devalbi.udemy.section_15_concurrency.challenge.reentrantlocks.v1;
 
 final class BankAccount {
 

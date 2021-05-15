@@ -1,4 +1,7 @@
-package devalbi.udemy.section_15_concurrency.challenge.synchronize;
+package devalbi.udemy.section_15_concurrency.challenge.reentrantlocks.v1;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
@@ -8,13 +11,11 @@ public class Main {
     * 3. T1 deposits 300
     * 4. T1 Withdraw 50
     * 5. T2 Deposit 203.75
-    * 6. T2 withdraw 100
-    * Update:
-    * Make Synchronized
-    * Make Thread Safe*/
+    * 6. T2 withdraw 100*/
 
     public static void main(String[] args) {
         BankAccount bankAccount = new BankAccount("1234-4567", 1000.00);
+        Lock lock = new ReentrantLock();
 
         long startTime = System.nanoTime();
         long endTime;
@@ -35,13 +36,30 @@ public class Main {
                 }
             });
 
-            t1.start();
-            t2.start();
-
         } finally {
             endTime = System.nanoTime();
             timer(startTime, endTime);
         }
+
+
+//        startTime = System.nanoTime();
+//        ExecutorService executorService = Executors.newFixedThreadPool(2);
+//            BankDeposit bd1 = new BankDeposit(bankAccount, 300, lock);
+//            BankWithdawl bw1 = new BankWithdawl(bankAccount, 50, lock);
+//
+//            BankDeposit bd2 = new BankDeposit(bankAccount, 203.75, lock);
+//            BankWithdawl bw2 = new BankWithdawl(bankAccount, 100, lock);
+//
+//            executorService.execute(bd1a);
+//            executorService.execute(bw1);
+//            executorService.execute(bd2);
+//            executorService.execute(bw2);
+//
+//        } finally {
+//            executorService.shutdown();
+//            endTime = System.nanoTime();
+//            timer(startTime, endTime);
+//        }
     }
     public static void timer(long startTime, long endTime){
         long avgTime = endTime - startTime;

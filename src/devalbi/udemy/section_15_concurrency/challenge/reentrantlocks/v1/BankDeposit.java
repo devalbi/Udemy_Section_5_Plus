@@ -1,11 +1,12 @@
-package devalbi.udemy.section_15_concurrency.challenge.reentrantlocks;
+package devalbi.udemy.section_15_concurrency.challenge.reentrantlocks.v1;
 
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 class BankDeposit implements Runnable {
     private BankAccount bankAccount;
     private double depositAmount;
-    private ReentrantLock bufferLock;
+    private Lock bufferLock;
 
     public BankDeposit(BankAccount bankAccount, double depositAmount, ReentrantLock bufferLock) {
         this.bankAccount = bankAccount;
