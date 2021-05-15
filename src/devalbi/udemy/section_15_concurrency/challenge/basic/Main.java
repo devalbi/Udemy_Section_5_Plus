@@ -24,7 +24,7 @@ public class Main {
         BankWithdawl bw1 = new BankWithdawl(bankAccount, 50, lock);
 
         BankDeposit bd2 = new BankDeposit(bankAccount, 203.75, lock);
-        BankWithdawl bw2 = new BankWithdawl(bankAccount, 100, lock);
+        BankWithdawl bw2 = new BankWithdawl(bankAccount, -100, lock);
 
         executorService.execute(bd1);
         executorService.execute(bw1);
