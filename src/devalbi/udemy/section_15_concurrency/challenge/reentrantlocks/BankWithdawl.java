@@ -1,4 +1,4 @@
-package devalbi.udemy.section_15_concurrency.challenge.basic;
+package devalbi.udemy.section_15_concurrency.challenge.reentrantlocks;
 
 import java.util.concurrent.locks.ReentrantLock;
 
