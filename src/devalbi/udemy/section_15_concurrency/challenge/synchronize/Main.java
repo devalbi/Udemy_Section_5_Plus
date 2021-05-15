@@ -9,7 +9,7 @@ public class Main {
     * 4. T1 Withdraw 50
     * 5. T2 Deposit 203.75
     * 6. T2 withdraw 100
-    * Update: 
+    * Update:
     * Make Synchronized*/
 
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class Main {
                     bankAccount.deposit(300);
                     bankAccount.withdraw(50);
                 }
-            });
+            }.start();
 
             Thread t2 = new Thread(new Runnable() {
                 @Override

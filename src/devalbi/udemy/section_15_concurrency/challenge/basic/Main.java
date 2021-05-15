@@ -33,6 +33,9 @@ public class Main {
                 }
             });
 
+            t1.start();
+            t2.start();
+
         } finally {
             endTime = System.nanoTime();
             timer(startTime, endTime);
