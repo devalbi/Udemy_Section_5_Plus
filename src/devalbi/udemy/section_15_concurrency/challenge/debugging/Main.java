@@ -33,7 +33,7 @@ class BankAccount {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                
+
                 balance -= amount;
                 System.out.printf("%s: Withdrew %f, Balance: %f\n",
                         Thread.currentThread().getName(),
