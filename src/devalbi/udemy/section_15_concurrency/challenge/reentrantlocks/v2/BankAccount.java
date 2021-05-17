@@ -21,10 +21,13 @@ final class BankAccount {
         if(amount <=0 ) {
             return;
         }
+        boolean status = false;
+
         try {
             if (lock.tryLock(1000, TimeUnit.MICROSECONDS)) {
                 try {
                     balance += amount;
+                    status = true;
                 } finally {
                     lock.unlock();
                     System.out.println("New balance is " + this.balance);
@@ -35,16 +38,21 @@ final class BankAccount {
         } catch (InterruptedException e) {
             System.out.println("could not get the lock on withdraw method");
         }
+
+        System.out.println("Transaction status = " + status);
     }
 
     public void withdraw(double amount) {
         if(amount <=0 ) {
             return;
         }
+        boolean status = false;
+
         try {
             if (lock.tryLock(1000, TimeUnit.MICROSECONDS)) {
                 try {
                     balance -= amount;
+                    status = true;
                 } finally {
                     lock.unlock();
                     System.out.println("New balance is " + this.balance);
@@ -55,6 +63,8 @@ final class BankAccount {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Transaction status = " + status);
     }
 
     public String getAccountNumber() {
