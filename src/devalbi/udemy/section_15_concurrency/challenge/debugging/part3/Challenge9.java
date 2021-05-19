@@ -28,14 +28,6 @@ public class Challenge9 {
     }
 }
 
-/*
-* Tutor has arrived
-* Student is studying
-* Tutor is studying with student
-* Tutor gave progress report
-* Student handed in assignment
-* */
-
 class NewTutor {
     private NewStudent student;
     private boolean studentLock = true;
