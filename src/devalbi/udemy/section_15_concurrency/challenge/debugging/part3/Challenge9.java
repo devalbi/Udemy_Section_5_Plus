@@ -28,9 +28,17 @@ public class Challenge9 {
     }
 }
 
+/*
+* Tutor has arrived
+* Student is studying
+* Tutor is studying with student
+* Tutor gave progress report
+* Student handed in assignment
+* */
+
 class NewTutor {
     private NewStudent student;
-    private Object tutorObject = new Object();
+    private boolean studentLock = true;
 
     public void setStudent(NewStudent student) {
         this.student = student;
@@ -38,32 +46,41 @@ class NewTutor {
 
     public void studyTime() {
 
-        synchronized (tutorObject) {
-            System.out.println("Tutor has arrived");
+        synchronized (this) {
+            System.out.println("Tutor has arrived"); // 1
         }
 
-        synchronized (student) {
-            try {
-                // wait for student to arrive
-                this.wait();
-            } catch (InterruptedException e) {
-
+        synchronized (student) { //1.2 student locked
+            while(studentLock) {
+                try {
+                    studentLock = false;
+                    student.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
+            studentLock = true;
             student.startStudy();
-            System.out.println("Tutor is studying with student");
+            System.out.println("Tutor is studying with student"); // 3
         }
     }
 
     public void getProgressReport() {
         // get progress report
-        System.out.println("Tutor gave progress report");
+        System.out.println("Tutor gave progress report"); // 4
     }
+
+
+    public boolean isStudentLock() {
+        return studentLock;
+    }
+
 }
 
 class NewStudent {
 
     private NewTutor tutor;
-    private Object studentObject = new Object();
 
     NewStudent(NewTutor tutor) {
         this.tutor = tutor;
@@ -71,17 +88,24 @@ class NewStudent {
 
     public void startStudy() {
         // study
-        System.out.println("Student is studying");
+        System.out.println("Student is studying"); // 2
     }
 
     public void handInAssignment() {
-        synchronized (tutor) {
+        synchronized (tutor) { //2.1 tutor locked
             tutor.getProgressReport();
         }
 
-        synchronized (studentObject) {
-            System.out.println("Student handed in assignment");
-            tutor.notifyAll();
+        while(true) {
+            if (!tutor.isStudentLock()) {
+                synchronized (this) {
+                    System.out.println("Student handed in assignment");
+                    notifyAll();
+                    break;
+                }
+            }
         }
     }
 }
+
+
