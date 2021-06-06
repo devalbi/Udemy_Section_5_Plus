@@ -75,12 +75,24 @@ public class Main {
         System.out.println("\n===============================\n");
         //Challenge 12 sort and print names with fist letter as uppercase using Stream
         //And only print out beginning with "A" and the count
-        System.out.println(topNames2015
+        long namesBeginningWithAtopNames2015 = topNames2015
                 .stream()
                 .map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
-                .filter(name -> name.substring(0,1).equals("A"))
+                .filter(name -> name.startsWith("A"))
+                .count();
+        System.out.println(namesBeginningWithAtopNames2015);
+
+
+
+
+        System.out.println("\n===============================\n");
+        //Challenge 13 use peek in the stream
+        topNames2015
+                .stream()
+                .map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
+                .peek(System.out::println)
                 .sorted(String::compareTo)
-                .count());
+                .count();
 
     }
 }
