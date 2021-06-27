@@ -39,5 +39,11 @@ public class Main {
         //Challenge 6, only match challenge 5 string in it's entirety.
         System.out.println(challenge5.matches("[a-g]{18}"));
         System.out.println(challenge5.matches("(^a{3}bc{6}d{3}ef{3}g$)"));
+
+        //Challenge 7, match any string with pattern of characters, followed by period, followed by numbers: abc.123
+
+        String challenge7 = "aBcd.135";
+        System.out.println(challenge7.matches("\\w+.?\\d+"));
+        System.out.println(challenge7.matches("[a-zA-Z]*.?[1-9]*"));
     }
 }
